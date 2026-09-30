@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="loading">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<noscript><style>.loader{display:none}html.loading{overflow:auto}html.loading .hero-card{opacity:1}</style></noscript>
 <style>
 :root{
   --ink:#000;
@@ -27,7 +26,6 @@
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;background:#000;-webkit-text-size-adjust:100%}
-html.loading{overflow:hidden}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:#000;color:#fff;font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3,p,ul,li{margin:0;padding:0}
@@ -46,14 +44,6 @@ img,svg,.nfc-card,.kc,.stand,.phone{-webkit-user-select:none;user-select:none;-w
 .logo-sub i{font-style:normal}
 .logo-sub i.sp{width:.9em;flex:none}
 .logo.compact .logo-sub{display:none}
-
-/* ---------- Loader ---------- */
-.loader{position:fixed;inset:0;z-index:100;background:#fff;color:#000;display:grid;place-items:center;transition:opacity .25s ease,visibility .25s ease}
-.loader-mark{width:82px;height:82px;border:2px solid #e5e5e5;border-top-color:#111;border-radius:50%;display:grid;place-items:center;animation:loader-spin .8s linear infinite}
-.loader-mark .logo{font-size:13px;--sub:#8a8a8a;animation:loader-counter-spin .8s linear infinite}
-html.ready .loader{opacity:0;visibility:hidden;pointer-events:none}
-@keyframes loader-spin{to{transform:rotate(360deg)}}
-@keyframes loader-counter-spin{to{transform:rotate(-360deg)}}
 
 /* ---------- Header ---------- */
 .bar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 18px) clamp(18px,4vw,40px) 18px;color:#fff;mix-blend-mode:difference;pointer-events:none}
@@ -74,14 +64,10 @@ html.ready .loader{opacity:0;visibility:hidden;pointer-events:none}
 .hero-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,4vh,36px);padding:70px 20px 90px;text-align:center;
   transform:scale(calc(1 - var(--p,0) * .1)) translateY(calc(var(--p,0) * -30px));opacity:calc(1 - var(--p,0) * .95);transform-origin:50% 60%}
 .hero-card{width:min(440px,82vw)}
-html.loading .hero-card{opacity:0}
-html.ready .hero-card{animation:rise 1.2s .35s cubic-bezier(.2,.8,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(90px) scale(.94)}to{opacity:1;transform:none}}
 .tilt{animation:float 7s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .hero-copy{max-width:44ch;font-size:clamp(15px,1.4vw,18px);line-height:1.6;color:#b4b4b4}
-html.ready .hero-copy{animation:rise 1s .9s cubic-bezier(.2,.8,.2,1) both}
-html.loading .hero-copy{opacity:0}
 .cue{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#bdbdbd;text-decoration:none;opacity:calc(1 - var(--p,0) * 3)}
 .cue::after{content:"";width:1px;height:38px;background:linear-gradient(#fff,transparent);animation:drip 2s ease-in-out infinite;transform-origin:top}
 @keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
@@ -299,19 +285,10 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
-  .loader-mark,.loader-mark .logo{animation:none}
 }
 </style>
 </head>
 <body>
-
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-mark">
-    <div class="logo compact">
-      <div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div>
-    </div>
-  </div>
-</div>
 
 <header class="bar">
   <a class="logo compact" href="#top" aria-label="OneTap Las Piñas home"><span class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></span></a>
@@ -632,28 +609,6 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
       el.appendChild(s);
     });
   });
-
-  /* Loader */
-  var loader = $('#loader');
-  var minTime = reduce ? 300 : 2000;
-  var start = Date.now();
-  var finished = false;
-  function finish(){
-    if(finished) return; finished = true;
-    var wait = Math.max(0, minTime - (Date.now() - start));
-    setTimeout(function(){
-      root.classList.remove('loading');
-      root.classList.add('ready');
-      window.scrollTo(0,0);
-      setTimeout(function(){ if(loader) loader.style.display = 'none'; }, 250);
-    }, wait);
-  }
-  var loaded = document.readyState === 'complete'
-    ? Promise.resolve()
-    : new Promise(function(r){ window.addEventListener('load', r, {once:true}); });
-  var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
-  Promise.all([loaded, fontsReady]).then(finish, finish);
-  setTimeout(finish, 5000);
 
   /* Hero scroll progress */
   var hero = $('#hero'), ticking = false;
