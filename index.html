@@ -1,779 +1,2324 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
-<title>OneTap Las Piñas | NFC cards, keychains & stands</title>
-<meta name="description" content="OneTap Las Piñas makes NFC business cards, keychains and stands. Custom design, your link, no monthly subscription.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#000;
-  --paper:#fff;
-  --g1:#f2f2f2;
-  --g2:#e0e0e0;
-  --g3:#bdbdbd;
-  --g5:#8a8a8a;
-  --g7:#4a4a4a;
-  --g9:#161616;
-  --display:'Jost','Century Gothic','Avenir Next','Helvetica Neue',Arial,sans-serif;
-  --body:'Manrope','Segoe UI','Helvetica Neue',Arial,sans-serif;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;background:#000;-webkit-text-size-adjust:100%}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:#000;color:#fff;font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3,p,ul,li{margin:0;padding:0}
-ul{list-style:none}
-a{color:inherit}
-button{font-family:inherit}
-:focus-visible{outline:2px solid currentColor;outline-offset:3px}
-img,svg,.nfc-card,.kc,.stand,.phone{-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>OneTap Las Piñas</title>
+    <meta
+      name="description"
+      content="OneTap Las Piñas makes NFC business cards, keychains and stands. Custom design, your link, no monthly subscription."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #000;
+        --paper: #fff;
+        --g1: #f2f2f2;
+        --g2: #e0e0e0;
+        --g3: #bdbdbd;
+        --g5: #8a8a8a;
+        --g7: #4a4a4a;
+        --g9: #161616;
+        --display:
+          "Jost", "Century Gothic", "Avenir Next", "Helvetica Neue", Arial,
+          sans-serif;
+        --body: "Manrope", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+        scroll-behavior: smooth;
+        background: #000;
+        -webkit-text-size-adjust: 100%;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #000;
+        color: #fff;
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        color: inherit;
+      }
+      button {
+        font-family: inherit;
+      }
+      :focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 3px;
+      }
+      img,
+      svg,
+      .nfc-card,
+      .kc,
+      .stand,
+      .phone {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
 
-/* ---------- Logo lockup ---------- */
-.logo{display:inline-flex;flex-direction:column;align-items:stretch;gap:.55em;font-family:var(--display);font-weight:300;line-height:1;--sub:#8a8a8a}
-.logo-main{display:flex;align-items:center;justify-content:center;gap:.5em;letter-spacing:.26em;white-space:nowrap}
-.logo-main b{font-weight:200;font-size:1.35em;letter-spacing:0;display:inline-block;transform:scaleY(1.12)}
-.logo-main span{margin-right:-.26em}
-.logo-sub{display:flex;justify-content:space-between;font-size:.42em;color:var(--sub);white-space:nowrap}
-.logo-sub i{font-style:normal}
-.logo-sub i.sp{width:.9em;flex:none}
-.logo.compact .logo-sub{display:none}
+      /* ---------- Logo lockup ---------- */
+      .logo {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.55em;
+        font-family: var(--display);
+        font-weight: 300;
+        line-height: 1;
+        --sub: #8a8a8a;
+      }
+      .logo-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        letter-spacing: 0.26em;
+        white-space: nowrap;
+      }
+      .logo-main b {
+        font-weight: 200;
+        font-size: 1.35em;
+        letter-spacing: 0;
+        display: inline-block;
+        transform: scaleY(1.12);
+      }
+      .logo-main span {
+        margin-right: -0.26em;
+      }
+      .logo-sub {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.42em;
+        color: var(--sub);
+        white-space: nowrap;
+      }
+      .logo-sub i {
+        font-style: normal;
+      }
+      .logo-sub i.sp {
+        width: 0.9em;
+        flex: none;
+      }
+      .logo.compact .logo-sub {
+        display: none;
+      }
 
-/* ---------- Header ---------- */
-.bar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 18px) clamp(18px,4vw,40px) 18px;color:#fff;mix-blend-mode:difference;pointer-events:none}
-.bar>*{pointer-events:auto}
-.bar .logo{font-size:17px}
-.bar-right{display:flex;align-items:center;gap:18px;font-family:var(--display);font-size:20px;font-weight:300}
-.bar-right .place{display:none}
-.pill{font:600 14px var(--body);text-decoration:none;border:1px solid #fff;border-radius:999px;padding:9px 18px}
-@media(min-width:640px){.bar-right .place{display:inline}}
+      /* ---------- Header ---------- */
+      .bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: calc(env(safe-area-inset-top, 0px) + 18px)
+          clamp(18px, 4vw, 40px) 18px;
+        color: #fff;
+        mix-blend-mode: difference;
+        pointer-events: none;
+      }
+      .bar > * {
+        pointer-events: auto;
+      }
+      .bar .logo {
+        font-size: 17px;
+      }
+      .bar-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-family: var(--display);
+        font-size: 20px;
+        font-weight: 300;
+      }
+      .bar-right .place {
+        display: none;
+      }
+      .pill {
+        font: 600 14px var(--body);
+        text-decoration: none;
+        border: 1px solid #fff;
+        border-radius: 999px;
+        padding: 9px 18px;
+      }
+      @media (min-width: 640px) {
+        .bar-right .place {
+          display: inline;
+        }
+      }
 
-/* ---------- Hero ---------- */
-.stage{position:relative}
-.hero{position:relative;z-index:0;height:100vh;height:100svh;min-height:min(620px,100svh);overflow:hidden;display:grid;place-items:center;color:#fff;
-  background:radial-gradient(90% 60% at 85% 12%,#2b2b2b 0%,rgba(43,43,43,0) 60%),radial-gradient(70% 50% at 8% 90%,#1f1f1f 0%,rgba(31,31,31,0) 60%),#050505}
-.hero-word{position:absolute;left:50%;top:16%;transform:translateX(-50%) translateY(calc(var(--p,0) * -70px));white-space:nowrap;
-  font:300 clamp(48px,12.6vw,230px)/1 var(--display);letter-spacing:-.045em;
-  background:linear-gradient(180deg,rgba(255,255,255,.8) 0%,rgba(255,255,255,.06) 88%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;pointer-events:none}
-.hero-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,4vh,36px);padding:70px 20px 90px;text-align:center;
-  transform:scale(calc(1 - var(--p,0) * .1)) translateY(calc(var(--p,0) * -30px));opacity:calc(1 - var(--p,0) * .95);transform-origin:50% 60%}
-.hero-card{width:min(440px,82vw)}
-@keyframes rise{from{opacity:0;transform:translateY(90px) scale(.94)}to{opacity:1;transform:none}}
-.tilt{animation:float 7s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.hero-copy{max-width:44ch;font-size:clamp(15px,1.4vw,18px);line-height:1.6;color:#b4b4b4}
-.cue{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#bdbdbd;text-decoration:none;opacity:calc(1 - var(--p,0) * 3)}
-.cue::after{content:"";width:1px;height:38px;background:linear-gradient(#fff,transparent);animation:drip 2s ease-in-out infinite;transform-origin:top}
-@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+      /* ---------- Hero ---------- */
+      .stage {
+        position: relative;
+      }
+      .hero {
+        position: relative;
+        z-index: 0;
+        height: 100vh;
+        height: 100svh;
+        min-height: min(620px, 100svh);
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background:
+          radial-gradient(
+            90% 60% at 85% 12%,
+            #2b2b2b 0%,
+            rgba(43, 43, 43, 0) 60%
+          ),
+          radial-gradient(
+            70% 50% at 8% 90%,
+            #1f1f1f 0%,
+            rgba(31, 31, 31, 0) 60%
+          ),
+          #050505;
+      }
+      .hero-word {
+        position: absolute;
+        left: 50%;
+        top: 16%;
+        transform: translateX(-50%) translateY(calc(var(--p, 0) * -70px));
+        white-space: nowrap;
+        font: 300 clamp(48px, 12.6vw, 230px)/1 var(--display);
+        letter-spacing: -0.045em;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.8) 0%,
+          rgba(255, 255, 255, 0.06) 88%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        user-select: none;
+        pointer-events: none;
+      }
+      .hero-inner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(20px, 4vh, 36px);
+        padding: 70px 20px 90px;
+        text-align: center;
+        transform: scale(calc(1 - var(--p, 0) * 0.1))
+          translateY(calc(var(--p, 0) * -30px));
+        opacity: calc(1 - var(--p, 0) * 0.95);
+        transform-origin: 50% 60%;
+      }
+      .hero-card {
+        width: min(440px, 82vw);
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(90px) scale(0.94);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .tilt {
+        animation: float 7s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .hero-copy {
+        max-width: 44ch;
+        font-size: clamp(15px, 1.4vw, 18px);
+        line-height: 1.6;
+        color: #b4b4b4;
+      }
+      .cue {
+        position: absolute;
+        left: 50%;
+        bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #bdbdbd;
+        text-decoration: none;
+        opacity: calc(1 - var(--p, 0) * 3);
+      }
+      .cue::after {
+        content: "";
+        width: 1px;
+        height: 38px;
+        background: linear-gradient(#fff, transparent);
+        animation: drip 2s ease-in-out infinite;
+        transform-origin: top;
+      }
+      @keyframes drip {
+        0% {
+          transform: scaleY(0);
+        }
+        50% {
+          transform: scaleY(1);
+        }
+        100% {
+          transform: scaleY(1);
+          opacity: 0;
+        }
+      }
 
-/* ---------- NFC card ---------- */
-.nfc-card{--rx:0deg;--ry:0deg;container-type:inline-size;position:relative;width:100%;aspect-ratio:1.586;border-radius:4.5% / 7.1%;overflow:hidden;
-  transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .18s ease-out,background .5s,color .5s,border-color .5s}
-.nfc-card.dark{background:linear-gradient(135deg,#3a3a3a 0%,#161616 42%,#050505 100%);color:#fff;border:1px solid rgba(255,255,255,.16);box-shadow:0 40px 70px -20px rgba(0,0,0,.7);--sub:#9a9a9a}
-.nfc-card.light{background:linear-gradient(135deg,#fff 0%,#f4f4f4 100%);color:#000;border:1px solid #d6d6d6;box-shadow:0 40px 60px -25px rgba(0,0,0,.35);--sub:#8a8a8a}
-.custom-design{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:.82;pointer-events:none}
-.card-in{position:absolute;inset:0;z-index:1;display:grid;place-items:center}
-.card-in .logo{font-size:9cqi}
-.nfc-ico{position:absolute;top:6cqi;right:6cqi;width:8cqi;height:8cqi;opacity:.85}
-.card-foot{position:absolute;left:6cqi;right:6cqi;bottom:5.5cqi;font:600 3.7cqi var(--body);letter-spacing:.03em;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,30%) var(--gy,0%),rgba(255,255,255,.2),transparent 55%)}
-.nfc-card.light .glare{background:radial-gradient(circle at var(--gx,30%) var(--gy,0%),rgba(0,0,0,.06),transparent 55%)}
+      /* ---------- NFC card ---------- */
+      .nfc-card {
+        --rx: 0deg;
+        --ry: 0deg;
+        container-type: inline-size;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1.586;
+        border-radius: 4.5% / 7.1%;
+        overflow: hidden;
+        transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+        transition:
+          transform 0.18s ease-out,
+          background 0.5s,
+          color 0.5s,
+          border-color 0.5s;
+      }
+      .nfc-card.dark {
+        background: linear-gradient(
+          135deg,
+          #3a3a3a 0%,
+          #161616 42%,
+          #050505 100%
+        );
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: 0 40px 70px -20px rgba(0, 0, 0, 0.7);
+        --sub: #9a9a9a;
+      }
+      .nfc-card.light {
+        background: linear-gradient(135deg, #fff 0%, #f4f4f4 100%);
+        color: #000;
+        border: 1px solid #d6d6d6;
+        box-shadow: 0 40px 60px -25px rgba(0, 0, 0, 0.35);
+        --sub: #8a8a8a;
+      }
+      .custom-design {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.82;
+        pointer-events: none;
+      }
+      .card-in {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+      }
+      .card-in .logo {
+        font-size: 9cqi;
+      }
+      .nfc-ico {
+        position: absolute;
+        top: 6cqi;
+        right: 6cqi;
+        width: 8cqi;
+        height: 8cqi;
+        opacity: 0.85;
+      }
+      .card-foot {
+        position: absolute;
+        left: 6cqi;
+        right: 6cqi;
+        bottom: 5.5cqi;
+        font: 600 3.7cqi var(--body);
+        letter-spacing: 0.03em;
+        opacity: 0.75;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .glare {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at var(--gx, 30%) var(--gy, 0%),
+          rgba(255, 255, 255, 0.2),
+          transparent 55%
+        );
+      }
+      .nfc-card.light .glare {
+        background: radial-gradient(
+          circle at var(--gx, 30%) var(--gy, 0%),
+          rgba(0, 0, 0, 0.06),
+          transparent 55%
+        );
+      }
 
-/* ---------- Sheet + sections ---------- */
-.sheet{position:relative;z-index:2}
-.pane{padding:clamp(72px,10vw,140px) clamp(20px,5vw,72px)}
-.pane.light{background:#fff;color:#000}
-.pane.dark{background:#000;color:#fff}
-.sheet>.pane:first-child{border-radius:34px 34px 0 0}
-.wrap{max-width:1200px;margin:0 auto;display:grid;gap:44px;align-items:center}
-@media(min-width:900px){
-  .wrap{grid-template-columns:1fr 1fr;gap:88px}
-  .wrap.flip .visual{order:-1}
-}
-h2.display{font:300 clamp(42px,6.6vw,88px)/.98 var(--display);letter-spacing:-.03em}
-h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em;margin-top:22px}
-.lead{font-size:clamp(16px,1.4vw,19px);line-height:1.65;max-width:46ch;margin-top:22px}
-.light .lead{color:#3d3d3d}
-.dark .lead{color:#bdbdbd}
-.lead+.lead{margin-top:14px}
-.tools{margin-top:34px;display:grid;gap:18px;justify-items:start}
-.hint{font-size:14px;font-weight:600}
-.light .hint{color:var(--g7)}
-.dark .hint{color:var(--g3)}
-.box{border-radius:28px;min-height:clamp(320px,48vw,520px);display:grid;place-items:center;padding:clamp(22px,4vw,40px) clamp(16px,3vw,22px);overflow:hidden}
-.light .box{background:var(--g1)}
-.dark .box{background:var(--g9)}
-.box .nfc-card{width:min(380px,100%)}
+      /* ---------- Sheet + sections ---------- */
+      .sheet {
+        position: relative;
+        z-index: 2;
+      }
+      .pane {
+        padding: clamp(72px, 10vw, 140px) clamp(20px, 5vw, 72px);
+      }
+      .pane.light {
+        background: #fff;
+        color: #000;
+      }
+      .pane.dark {
+        background: #000;
+        color: #fff;
+      }
+      .sheet > .pane:first-child {
+        border-radius: 34px 34px 0 0;
+      }
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        gap: 44px;
+        align-items: center;
+      }
+      @media (min-width: 900px) {
+        .wrap {
+          grid-template-columns: 1fr 1fr;
+          gap: 88px;
+        }
+        .wrap.flip .visual {
+          order: -1;
+        }
+      }
+      h2.display {
+        font: 300 clamp(42px, 6.6vw, 88px)/0.98 var(--display);
+        letter-spacing: -0.03em;
+      }
+      h3.sub {
+        font: 300 clamp(24px, 2.6vw, 34px)/1.15 var(--display);
+        letter-spacing: -0.01em;
+        margin-top: 22px;
+      }
+      .lead {
+        font-size: clamp(16px, 1.4vw, 19px);
+        line-height: 1.65;
+        max-width: 46ch;
+        margin-top: 22px;
+      }
+      .light .lead {
+        color: #3d3d3d;
+      }
+      .dark .lead {
+        color: #bdbdbd;
+      }
+      .lead + .lead {
+        margin-top: 14px;
+      }
+      .tools {
+        margin-top: 34px;
+        display: grid;
+        gap: 18px;
+        justify-items: start;
+      }
+      .hint {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .light .hint {
+        color: var(--g7);
+      }
+      .dark .hint {
+        color: var(--g3);
+      }
+      .box {
+        border-radius: 28px;
+        min-height: clamp(320px, 48vw, 520px);
+        display: grid;
+        place-items: center;
+        padding: clamp(22px, 4vw, 40px) clamp(16px, 3vw, 22px);
+        overflow: hidden;
+      }
+      .light .box {
+        background: var(--g1);
+      }
+      .dark .box {
+        background: var(--g9);
+      }
+      .box .nfc-card {
+        width: min(380px, 100%);
+      }
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px var(--body);padding:15px 26px;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;text-decoration:none;transition:background .2s,color .2s}
-.light .btn.solid{background:#000;color:#fff}
-.light .btn.solid:hover{background:#fff;color:#000}
-.dark .btn.solid{background:#fff;color:#000}
-.dark .btn.solid:hover{background:#000;color:#fff}
-.btn:not(.solid):hover{background:currentColor}
-.light .btn:not(.solid):hover{color:#000}
-.light .btn:not(.solid):hover span{color:#fff}
-.dark .btn:not(.solid):hover span{color:#000}
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font: 600 15px var(--body);
+        padding: 15px 26px;
+        border-radius: 999px;
+        border: 1px solid currentColor;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .light .btn.solid {
+        background: #000;
+        color: #fff;
+      }
+      .light .btn.solid:hover {
+        background: #fff;
+        color: #000;
+      }
+      .dark .btn.solid {
+        background: #fff;
+        color: #000;
+      }
+      .dark .btn.solid:hover {
+        background: #000;
+        color: #fff;
+      }
+      .btn:not(.solid):hover {
+        background: currentColor;
+      }
+      .light .btn:not(.solid):hover {
+        color: #000;
+      }
+      .light .btn:not(.solid):hover span {
+        color: #fff;
+      }
+      .dark .btn:not(.solid):hover span {
+        color: #000;
+      }
 
-.seg{display:inline-flex;border:1px solid currentColor;border-radius:999px;padding:4px;gap:4px}
-.seg button{font:600 14px var(--body);padding:9px 20px;border-radius:999px;border:0;background:transparent;color:inherit;cursor:pointer}
-.light .seg button[aria-pressed=true]{background:#000;color:#fff}
-.dark .seg button[aria-pressed=true]{background:#fff;color:#000}
+      .seg {
+        display: inline-flex;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        padding: 4px;
+        gap: 4px;
+      }
+      .seg button {
+        font: 600 14px var(--body);
+        padding: 9px 20px;
+        border-radius: 999px;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+      }
+      .light .seg button[aria-pressed="true"] {
+        background: #000;
+        color: #fff;
+      }
+      .dark .seg button[aria-pressed="true"] {
+        background: #fff;
+        color: #000;
+      }
 
-.field{display:grid;gap:8px;font:600 14px var(--body);width:100%}
-.field input,.field select,.field textarea{font:400 16px var(--body);padding:14px 16px;border-radius:14px;border:1px solid currentColor;background:transparent;color:inherit;width:100%;appearance:none;-webkit-appearance:none}
-.field input[type=file]{padding:10px;font-size:13px}
-.upload-note{max-width:44ch;line-height:1.5}
-.upload-status{min-height:1.4em}
-.field select{background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 22px) 55%,calc(100% - 16px) 55%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px}
-.field select option{color:#000}
-.field textarea{resize:vertical;min-height:96px}
-.field input::placeholder,.field textarea::placeholder{color:currentColor;opacity:.45}
+      .field {
+        display: grid;
+        gap: 8px;
+        font: 600 14px var(--body);
+        width: 100%;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        font: 400 16px var(--body);
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1px solid currentColor;
+        background: transparent;
+        color: inherit;
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+      .field input[type="file"] {
+        padding: 10px;
+        font-size: 13px;
+      }
+      .upload-note {
+        max-width: 44ch;
+        line-height: 1.5;
+      }
+      .upload-status {
+        min-height: 1.4em;
+      }
+      .field select {
+        background-image:
+          linear-gradient(45deg, transparent 50%, currentColor 50%),
+          linear-gradient(135deg, currentColor 50%, transparent 50%);
+        background-position:
+          calc(100% - 22px) 55%,
+          calc(100% - 16px) 55%;
+        background-size:
+          6px 6px,
+          6px 6px;
+        background-repeat: no-repeat;
+        padding-right: 44px;
+      }
+      .field select option {
+        color: #000;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 96px;
+      }
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: currentColor;
+        opacity: 0.45;
+      }
 
-.chips{display:flex;flex-wrap:wrap;gap:10px}
-.chip{font:600 14px var(--body);padding:10px 18px;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;transition:background .2s,color .2s}
-.dark .chip[aria-pressed=true]{background:#fff;color:#000}
-.dark .chip:not([aria-pressed=true]):hover{background:#222}
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .chip {
+        font: 600 14px var(--body);
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid currentColor;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .dark .chip[aria-pressed="true"] {
+        background: #fff;
+        color: #000;
+      }
+      .dark .chip:not([aria-pressed="true"]):hover {
+        background: #222;
+      }
 
-/* ---------- Keychain ---------- */
-.kc{position:relative;width:250px;height:300px}
-.kc-ring{position:absolute;left:50%;top:0;width:84px;height:84px;margin-left:-42px;border-radius:50%;border:6px solid #d4d4d4;z-index:3;box-shadow:inset 0 0 0 1px rgba(0,0,0,.35)}
-.kc-swing{position:absolute;left:50%;top:55px;width:210px;margin-left:-105px;transform-origin:50% 25px;animation:swing 5s ease-in-out infinite}
-@keyframes swing{0%,100%{transform:rotate(-3.5deg)}50%{transform:rotate(3.5deg)}}
-/* round acrylic disc */
-.kc-tag{position:relative;width:210px;height:210px;border-radius:50%;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding-top:26px;
-  background:radial-gradient(circle at 30% 24%,rgba(255,255,255,.5),rgba(255,255,255,.16) 42%,rgba(255,255,255,.07) 100%);
-  border:1.5px solid rgba(255,255,255,.62);
-  box-shadow:inset 0 0 0 7px rgba(255,255,255,.07),inset 0 0 0 8px rgba(255,255,255,.3),inset 0 0 36px rgba(255,255,255,.22),0 30px 40px -18px rgba(0,0,0,.9),0 0 50px rgba(255,255,255,.07)}
-.kc-tag>.custom-design{border-radius:50%}
-.kc-coil{position:absolute;inset:0;border-radius:50%;pointer-events:none;opacity:.7;background:repeating-radial-gradient(circle,rgba(255,255,255,.34) 0 1px,transparent 1px 6px);-webkit-mask:radial-gradient(circle closest-side,transparent 63%,#000 64%,#000 91%,transparent 92%);mask:radial-gradient(circle closest-side,transparent 63%,#000 64%,#000 91%,transparent 92%)}
-.kc-gloss{position:absolute;inset:0;border-radius:50%;overflow:hidden;pointer-events:none}
-.kc-gloss::before{content:"";position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 46%,rgba(255,255,255,.05) 52%,transparent 58%);animation:sheen 6s ease-in-out infinite}
-@keyframes sheen{0%,50%{transform:translateX(-65%)}100%{transform:translateX(65%)}}
-.kc-hole{position:absolute;top:16px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--g9);border:1.5px solid rgba(255,255,255,.55);box-shadow:inset 0 2px 3px rgba(0,0,0,.7)}
-.kc-tag .logo{position:relative;font-size:13px;--sub:#cfcfcf;text-shadow:0 1px 2px rgba(0,0,0,.25)}
-.kc-link{position:relative;display:flex;align-items:center;background:#fff;color:#000;border-radius:999px;padding:7px 14px;font:700 11px var(--body);max-width:130px}
-.kc-link span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:opacity .15s}
-.kc-link span.swap{opacity:0}
+      /* ---------- Keychain ---------- */
+      .kc {
+        position: relative;
+        width: 250px;
+        height: 300px;
+      }
+      .kc-ring {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 84px;
+        height: 84px;
+        margin-left: -42px;
+        border-radius: 50%;
+        border: 6px solid #d4d4d4;
+        z-index: 3;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+      }
+      .kc-swing {
+        position: absolute;
+        left: 50%;
+        top: 55px;
+        width: 210px;
+        margin-left: -105px;
+        transform-origin: 50% 25px;
+        animation: swing 5s ease-in-out infinite;
+      }
+      @keyframes swing {
+        0%,
+        100% {
+          transform: rotate(-3.5deg);
+        }
+        50% {
+          transform: rotate(3.5deg);
+        }
+      }
+      /* round acrylic disc */
+      .kc-tag {
+        position: relative;
+        width: 210px;
+        height: 210px;
+        border-radius: 50%;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        padding-top: 26px;
+        background: radial-gradient(
+          circle at 30% 24%,
+          rgba(255, 255, 255, 0.5),
+          rgba(255, 255, 255, 0.16) 42%,
+          rgba(255, 255, 255, 0.07) 100%
+        );
+        border: 1.5px solid rgba(255, 255, 255, 0.62);
+        box-shadow:
+          inset 0 0 0 7px rgba(255, 255, 255, 0.07),
+          inset 0 0 0 8px rgba(255, 255, 255, 0.3),
+          inset 0 0 36px rgba(255, 255, 255, 0.22),
+          0 30px 40px -18px rgba(0, 0, 0, 0.9),
+          0 0 50px rgba(255, 255, 255, 0.07);
+      }
+      .kc-tag > .custom-design {
+        border-radius: 50%;
+      }
+      .kc-coil {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0.7;
+        background: repeating-radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.34) 0 1px,
+          transparent 1px 6px
+        );
+        -webkit-mask: radial-gradient(
+          circle closest-side,
+          transparent 63%,
+          #000 64%,
+          #000 91%,
+          transparent 92%
+        );
+        mask: radial-gradient(
+          circle closest-side,
+          transparent 63%,
+          #000 64%,
+          #000 91%,
+          transparent 92%
+        );
+      }
+      .kc-gloss {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .kc-gloss::before {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        background: linear-gradient(
+          115deg,
+          transparent 38%,
+          rgba(255, 255, 255, 0.3) 46%,
+          rgba(255, 255, 255, 0.05) 52%,
+          transparent 58%
+        );
+        animation: sheen 6s ease-in-out infinite;
+      }
+      @keyframes sheen {
+        0%,
+        50% {
+          transform: translateX(-65%);
+        }
+        100% {
+          transform: translateX(65%);
+        }
+      }
+      .kc-hole {
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        width: 18px;
+        height: 18px;
+        margin-left: -9px;
+        border-radius: 50%;
+        background: var(--g9);
+        border: 1.5px solid rgba(255, 255, 255, 0.55);
+        box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.7);
+      }
+      .kc-tag .logo {
+        position: relative;
+        font-size: 13px;
+        --sub: #cfcfcf;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      }
+      .kc-link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #fff;
+        color: #000;
+        border-radius: 999px;
+        padding: 7px 14px;
+        font: 700 11px var(--body);
+        max-width: 130px;
+      }
+      .kc-link span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        transition: opacity 0.15s;
+      }
+      .kc-link span.swap {
+        opacity: 0;
+      }
 
-/* ---------- Stand ---------- */
-.stand{width:min(250px,64vw)}
-.stand-body{position:relative;overflow:hidden;aspect-ratio:3/4;border-radius:20px 20px 6px 6px;background:linear-gradient(155deg,#343434,#0a0a0a 62%);border:1px solid rgba(255,255,255,.16);color:#fff;padding:22px 20px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 40px 60px -25px rgba(0,0,0,.55)}
-.stand-body>*:not(.custom-design){position:relative;z-index:1}
-.stand-body .logo{font-size:15px;--sub:#9a9a9a}
-.stand-msg{font:500 15px/1.35 var(--body);margin-top:16px}
-.srows{display:flex;flex-direction:column;width:100%;margin-top:6px}
-.srow{margin-top:10px;padding:11px 16px;border:1px solid rgba(255,255,255,.4);border-radius:999px;font:600 14px var(--body);text-align:left}
-.r3{display:grid;grid-template-rows:1fr;opacity:1;transition:grid-template-rows .45s ease,opacity .45s ease}
-.r3>div{overflow:hidden;min-height:0;padding-top:10px}
-.r3 .srow{margin-top:0}
-.stand[data-links="2"] .r3{grid-template-rows:0fr;opacity:0}
-.stand-tap{margin-top:auto;display:flex;align-items:center;gap:8px;font:600 13px var(--body);color:#cfcfcf}
-.stand-tap svg{width:20px;height:20px}
-.stand-base{height:22px;margin:0 -20px;border-radius:0 0 16px 16px;background:linear-gradient(#222,#000);box-shadow:0 20px 30px -12px rgba(0,0,0,.5)}
-.opts{display:grid;gap:12px;width:100%;max-width:420px;border:0;padding:0;margin:0}
-.opts legend{font:600 14px var(--body);margin-bottom:12px;padding:0}
-.opt{display:flex;align-items:center;gap:14px;border:1px solid #000;border-radius:16px;padding:16px 18px;cursor:pointer;transition:background .2s,color .2s}
-.opt input{position:absolute;opacity:0;pointer-events:none}
-.opt .dot{width:18px;height:18px;border-radius:50%;border:1.5px solid currentColor;flex:none;display:grid;place-items:center}
-.opt .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;transform:scale(0);transition:transform .2s}
-.opt:has(input:checked){background:#000;color:#fff}
-.opt:has(input:checked) .dot::after{transform:scale(1)}
-.opt:has(input:focus-visible){outline:2px solid #000;outline-offset:3px}
-.opt b{font:400 24px var(--display);display:block;letter-spacing:-.01em}
-.opt small{font:500 14px var(--body);opacity:.8}
-.closing{font:300 clamp(24px,2.6vw,34px)/1.2 var(--display);margin-top:36px;letter-spacing:-.01em}
+      /* ---------- Stand ---------- */
+      .stand {
+        width: min(250px, 64vw);
+      }
+      .stand-body {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+        border-radius: 20px 20px 6px 6px;
+        background: linear-gradient(155deg, #343434, #0a0a0a 62%);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: #fff;
+        padding: 22px 20px 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 40px 60px -25px rgba(0, 0, 0, 0.55);
+      }
+      .stand-body > *:not(.custom-design) {
+        position: relative;
+        z-index: 1;
+      }
+      .stand-body .logo {
+        font-size: 15px;
+        --sub: #9a9a9a;
+      }
+      .stand-msg {
+        font: 500 15px/1.35 var(--body);
+        margin-top: 16px;
+      }
+      .srows {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 6px;
+      }
+      .srow {
+        margin-top: 10px;
+        padding: 11px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 999px;
+        font: 600 14px var(--body);
+        text-align: left;
+      }
+      .r3 {
+        display: grid;
+        grid-template-rows: 1fr;
+        opacity: 1;
+        transition:
+          grid-template-rows 0.45s ease,
+          opacity 0.45s ease;
+      }
+      .r3 > div {
+        overflow: hidden;
+        min-height: 0;
+        padding-top: 10px;
+      }
+      .r3 .srow {
+        margin-top: 0;
+      }
+      .stand[data-links="2"] .r3 {
+        grid-template-rows: 0fr;
+        opacity: 0;
+      }
+      .stand-tap {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font: 600 13px var(--body);
+        color: #cfcfcf;
+      }
+      .stand-tap svg {
+        width: 20px;
+        height: 20px;
+      }
+      .stand-base {
+        height: 22px;
+        margin: 0 -20px;
+        border-radius: 0 0 16px 16px;
+        background: linear-gradient(#222, #000);
+        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+      }
+      .opts {
+        display: grid;
+        gap: 12px;
+        width: 100%;
+        max-width: 420px;
+        border: 0;
+        padding: 0;
+        margin: 0;
+      }
+      .opts legend {
+        font: 600 14px var(--body);
+        margin-bottom: 12px;
+        padding: 0;
+      }
+      .opt {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border: 1px solid #000;
+        border-radius: 16px;
+        padding: 16px 18px;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .opt input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .opt .dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1.5px solid currentColor;
+        flex: none;
+        display: grid;
+        place-items: center;
+      }
+      .opt .dot::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: currentColor;
+        transform: scale(0);
+        transition: transform 0.2s;
+      }
+      .opt:has(input:checked) {
+        background: #000;
+        color: #fff;
+      }
+      .opt:has(input:checked) .dot::after {
+        transform: scale(1);
+      }
+      .opt:has(input:focus-visible) {
+        outline: 2px solid #000;
+        outline-offset: 3px;
+      }
+      .opt b {
+        font: 400 24px var(--display);
+        display: block;
+        letter-spacing: -0.01em;
+      }
+      .opt small {
+        font: 500 14px var(--body);
+        opacity: 0.8;
+      }
+      .closing {
+        font: 300 clamp(24px, 2.6vw, 34px)/1.2 var(--display);
+        margin-top: 36px;
+        letter-spacing: -0.01em;
+      }
 
-/* ---------- Promise ---------- */
-.promise{max-width:1200px;margin:0 auto}
-.promise h2{margin-bottom:clamp(36px,6vw,72px)}
-.promise li{display:grid;gap:14px;padding:32px 0;border-top:1px solid #3a3a3a}
-.promise li:last-child{border-bottom:1px solid #3a3a3a}
-.promise h3{font:300 clamp(30px,4.6vw,60px)/1.02 var(--display);letter-spacing:-.025em}
-.promise p{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:#bdbdbd;max-width:40ch;align-self:end}
-@media(min-width:800px){.promise li{grid-template-columns:1.3fr 1fr;gap:60px;align-items:end}}
+      /* ---------- Promise ---------- */
+      .promise {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .promise h2 {
+        margin-bottom: clamp(36px, 6vw, 72px);
+      }
+      .promise li {
+        display: grid;
+        gap: 14px;
+        padding: 32px 0;
+        border-top: 1px solid #3a3a3a;
+      }
+      .promise li:last-child {
+        border-bottom: 1px solid #3a3a3a;
+      }
+      .promise h3 {
+        font: 300 clamp(30px, 4.6vw, 60px)/1.02 var(--display);
+        letter-spacing: -0.025em;
+      }
+      .promise p {
+        font-size: clamp(16px, 1.4vw, 19px);
+        line-height: 1.6;
+        color: #bdbdbd;
+        max-width: 40ch;
+        align-self: end;
+      }
+      @media (min-width: 800px) {
+        .promise li {
+          grid-template-columns: 1.3fr 1fr;
+          gap: 60px;
+          align-items: end;
+        }
+      }
 
-/* ---------- Tap demo ---------- */
-.steps{margin-top:34px}
-.step{display:grid;grid-template-columns:minmax(120px,auto) 1fr;gap:18px;align-items:baseline;padding:20px 0;border-top:1px solid #000;opacity:.28;transition:opacity .5s}
-.step:last-child{border-bottom:1px solid #000}
-.step.on{opacity:1}
-.step b{font:300 clamp(30px,3.6vw,46px)/1 var(--display);letter-spacing:-.02em}
-.step p{font-size:15px;line-height:1.55;color:#3d3d3d}
-.demo{position:relative;min-height:clamp(420px,58vw,540px);display:grid;place-items:center;overflow:hidden}
-.phone{position:relative;z-index:2;width:min(226px,58vw);aspect-ratio:9/18.4;border-radius:38px;background:#000;padding:7px;box-shadow:0 0 0 2px #2a2a2a,0 40px 50px -25px rgba(0,0,0,.6);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.demo[data-state=open] .phone{transform:translateY(-10px) rotate(-2deg)}
-.screen{position:absolute;inset:7px;border-radius:31px;overflow:hidden;transition:opacity .6s}
-.island{position:absolute;z-index:3;top:16px;left:50%;width:70px;height:20px;margin-left:-35px;border-radius:999px;background:#000}
-.s-lock{background:linear-gradient(170deg,#3b3b3b,#0a0a0a);color:#fff;display:flex;flex-direction:column;align-items:center;padding-top:74px;text-align:center}
-.s-lock .time{font:300 56px/1 var(--display)}
-.s-lock p{margin-top:auto;margin-bottom:34px;font:600 13px var(--body);color:#c8c8c8;max-width:14ch;line-height:1.4}
-.s-open{background:linear-gradient(#f4f4f6,#fff);color:#000;opacity:0;padding:58px 16px 16px;display:flex;flex-direction:column;align-items:center;text-align:center}
-.demo[data-state=open] .s-lock{opacity:0}
-.demo[data-state=open] .s-open{opacity:1}
-.avatar{width:58px;height:58px;border-radius:50%;background:#000;color:#fff;display:grid;place-items:center;font:300 26px var(--display)}
-.s-open h4{font:400 20px var(--display);margin:10px 0 2px}
-.s-open small{font-size:12px;color:#666;font-weight:600}
-.lnk{display:flex;flex-direction:column;gap:8px;width:100%;margin-top:16px}
-.lnk span{background:#000;color:#fff;border-radius:12px;padding:11px;font:600 13px var(--body)}
-.lnk span.alt{background:#fff;color:#000;border:1px solid #d6d6d6}
-.demo .nfc-card{position:absolute;z-index:1;width:min(290px,72vw);left:50%;top:60%;margin-left:-6%;transform:rotate(-10deg);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-.demo[data-state=open] .nfc-card{transform:translateY(-52px) rotate(-5deg)}
-.ripple{position:absolute;z-index:3;left:50%;top:58%;width:150px;height:150px;margin:-75px 0 0 -75px;pointer-events:none}
-.ripple i{position:absolute;inset:0;border-radius:50%;border:1.5px solid #000;opacity:0}
-.demo.go .ripple i{animation:ping 1.5s ease-out both}
-.demo.go .ripple i:nth-child(2){animation-delay:.25s}
-.demo.go .ripple i:nth-child(3){animation-delay:.5s}
-@keyframes ping{from{opacity:.7;transform:scale(.2)}to{opacity:0;transform:scale(2.6)}}
-.replay{position:absolute;z-index:4;bottom:22px;left:50%;transform:translateX(-50%)}
+      /* ---------- Tap demo ---------- */
+      .steps {
+        margin-top: 34px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: minmax(120px, auto) 1fr;
+        gap: 18px;
+        align-items: baseline;
+        padding: 20px 0;
+        border-top: 1px solid #000;
+        opacity: 0.28;
+        transition: opacity 0.5s;
+      }
+      .step:last-child {
+        border-bottom: 1px solid #000;
+      }
+      .step.on {
+        opacity: 1;
+      }
+      .step b {
+        font: 300 clamp(30px, 3.6vw, 46px)/1 var(--display);
+        letter-spacing: -0.02em;
+      }
+      .step p {
+        font-size: 15px;
+        line-height: 1.55;
+        color: #3d3d3d;
+      }
+      .demo {
+        position: relative;
+        min-height: clamp(420px, 58vw, 540px);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .phone {
+        position: relative;
+        z-index: 2;
+        width: min(226px, 58vw);
+        aspect-ratio: 9/18.4;
+        border-radius: 38px;
+        background: #000;
+        padding: 7px;
+        box-shadow:
+          0 0 0 2px #2a2a2a,
+          0 40px 50px -25px rgba(0, 0, 0, 0.6);
+        transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .demo[data-state="open"] .phone {
+        transform: translateY(-10px) rotate(-2deg);
+      }
+      .screen {
+        position: absolute;
+        inset: 7px;
+        border-radius: 31px;
+        overflow: hidden;
+        transition: opacity 0.6s;
+      }
+      .island {
+        position: absolute;
+        z-index: 3;
+        top: 16px;
+        left: 50%;
+        width: 70px;
+        height: 20px;
+        margin-left: -35px;
+        border-radius: 999px;
+        background: #000;
+      }
+      .s-lock {
+        background: linear-gradient(170deg, #3b3b3b, #0a0a0a);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 74px;
+        text-align: center;
+      }
+      .s-lock .time {
+        font: 300 56px/1 var(--display);
+      }
+      .s-lock p {
+        margin-top: auto;
+        margin-bottom: 34px;
+        font: 600 13px var(--body);
+        color: #c8c8c8;
+        max-width: 14ch;
+        line-height: 1.4;
+      }
+      .s-open {
+        background: linear-gradient(#f4f4f6, #fff);
+        color: #000;
+        opacity: 0;
+        padding: 58px 16px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .demo[data-state="open"] .s-lock {
+        opacity: 0;
+      }
+      .demo[data-state="open"] .s-open {
+        opacity: 1;
+      }
+      .avatar {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #000;
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font: 300 26px var(--display);
+      }
+      .s-open h4 {
+        font: 400 20px var(--display);
+        margin: 10px 0 2px;
+      }
+      .s-open small {
+        font-size: 12px;
+        color: #666;
+        font-weight: 600;
+      }
+      .lnk {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        margin-top: 16px;
+      }
+      .lnk span {
+        background: #000;
+        color: #fff;
+        border-radius: 12px;
+        padding: 11px;
+        font: 600 13px var(--body);
+      }
+      .lnk span.alt {
+        background: #fff;
+        color: #000;
+        border: 1px solid #d6d6d6;
+      }
+      .demo .nfc-card {
+        position: absolute;
+        z-index: 1;
+        width: min(290px, 72vw);
+        left: 50%;
+        top: 60%;
+        margin-left: -6%;
+        transform: rotate(-10deg);
+        transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .demo[data-state="open"] .nfc-card {
+        transform: translateY(-52px) rotate(-5deg);
+      }
+      .ripple {
+        position: absolute;
+        z-index: 3;
+        left: 50%;
+        top: 58%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        pointer-events: none;
+      }
+      .ripple i {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 1.5px solid #000;
+        opacity: 0;
+      }
+      .demo.go .ripple i {
+        animation: ping 1.5s ease-out both;
+      }
+      .demo.go .ripple i:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+      .demo.go .ripple i:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+      @keyframes ping {
+        from {
+          opacity: 0.7;
+          transform: scale(0.2);
+        }
+        to {
+          opacity: 0;
+          transform: scale(2.6);
+        }
+      }
+      .replay {
+        position: absolute;
+        z-index: 4;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
-/* ---------- Order + footer ---------- */
-.order-form{display:grid;gap:18px;align-content:start}
-.order-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
-.status{font-size:14px;font-weight:600;color:#bdbdbd;min-height:1.4em}
-.foot{max-width:1200px;margin:clamp(72px,10vw,130px) auto 0;padding-top:34px;border-top:1px solid #3a3a3a;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:22px}
-.foot .logo{font-size:30px;--sub:#8a8a8a}
-.foot p{font-size:14px;color:#9a9a9a}
+      /* ---------- Order + footer ---------- */
+      .order-form {
+        display: grid;
+        gap: 18px;
+        align-content: start;
+      }
+      .order-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+      }
+      .status {
+        font-size: 14px;
+        font-weight: 600;
+        color: #bdbdbd;
+        min-height: 1.4em;
+      }
+      .foot {
+        max-width: 1200px;
+        margin: clamp(72px, 10vw, 130px) auto 0;
+        padding-top: 34px;
+        border-top: 1px solid #3a3a3a;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 22px;
+      }
+      .foot .logo {
+        font-size: 30px;
+        --sub: #8a8a8a;
+      }
+      .foot p {
+        font-size: 14px;
+        color: #9a9a9a;
+      }
 
-@media(max-width:520px){
-  .step{grid-template-columns:1fr;gap:6px}
-  .hero-inner{width:100%;gap:clamp(12px,3svh,22px);padding:calc(64px + env(safe-area-inset-top,0px)) 18px calc(76px + env(safe-area-inset-bottom,0px));transform:none;opacity:1}
-  .hero-card{width:min(82vw,360px,calc((100svh - 230px)*1.586));max-width:100%}
-  .hero-copy{max-width:34ch;font-size:15px}
-  .bar{padding-left:16px;padding-right:16px}
-  .bar .logo{font-size:14px}
-  .bar-right{gap:10px;font-size:17px}
-  .pill{font-size:13px;padding:8px 14px}
-  .pane{padding:68px 20px}
-  .sheet>.pane:first-child{border-radius:24px 24px 0 0}
-  h2.display{font-size:clamp(38px,11vw,54px)}
-  .tools{width:100%;margin-top:26px}
-  .tools>.btn,.tools>.seg{max-width:100%}
-  .seg{display:flex;width:100%}
-  .seg button{flex:1;padding:10px 12px}
-  .box{min-height:0;aspect-ratio:1.08;border-radius:22px}
-  .box .nfc-card{width:min(100%,380px)}
-  .kc{transform:scale(.9);transform-origin:center}
-  .promise li{padding:25px 0}
-  .demo{min-height:min(440px,calc(100svh - 180px))}
-  .demo .nfc-card{width:min(250px,70vw);top:59%;margin-left:-8%}
-  .foot{align-items:flex-start;flex-direction:column;gap:14px}
-  .foot .logo{font-size:25px}
-  .order-actions{align-items:stretch;flex-direction:column}
-  .order-actions .btn{width:100%}
-}
-@media(max-width:520px) and (max-height:650px){
-  .hero-inner{gap:10px;padding-top:calc(56px + env(safe-area-inset-top,0px));padding-bottom:calc(58px + env(safe-area-inset-bottom,0px))}
-  .hero-card{width:min(70vw,calc((100svh - 180px)*1.586))}
-  .hero-copy{font-size:14px;line-height:1.45}
-  .cue{bottom:calc(10px + env(safe-area-inset-bottom,0px))}
-  .cue::after{height:20px}
-}
-@media(min-width:521px) and (max-width:899px){
-  .pane{padding:clamp(76px,9vw,104px) clamp(28px,6vw,56px)}
-  .wrap{gap:34px}
-  .box{min-height:clamp(340px,50vw,440px)}
-  .hero-inner{gap:28px}
-  .hero-card{width:min(420px,68vw)}
-  .demo{min-height:490px}
-}
-@media(max-height:700px) and (min-width:521px){
-  .hero-inner{gap:18px;padding-top:60px;padding-bottom:70px}
-  .hero-card{width:min(360px,48vw)}
-  .hero-word{top:12%}
-}
-@media(max-width:899px){
-  .product-pane .visual{order:-1}
-  .hero{position:relative;height:auto;height:100svh;min-height:560px;min-height:100svh;overflow:clip}
-  .hero-inner{transform:none;opacity:1}
-  .hero-word{transform:translateX(-50%);}
-  .hero .cue{opacity:1}
-  .bar{position:absolute}
-  .sheet{z-index:auto}
-  .hero-card,.hero-copy{flex:none}
-  .hero-card{width:min(82vw,360px)}
-}
-@media(max-width:520px){
-  .hero{height:auto;min-height:100svh;padding-top:68px;padding-bottom:78px;display:flex;align-items:center}
-  .hero-inner{padding:18px;gap:clamp(16px,3svh,24px)}
-  .hero-card{width:min(82vw,360px)}
-  .hero .cue{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
-  .hero-word{top:12%;font-size:clamp(42px,11vw,64px)}
-}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
-}
-</style>
-</head>
-<body>
+      @media (max-width: 520px) {
+        .step {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+        .hero-inner {
+          width: 100%;
+          gap: clamp(12px, 3svh, 22px);
+          padding: calc(64px + env(safe-area-inset-top, 0px)) 18px
+            calc(76px + env(safe-area-inset-bottom, 0px));
+          transform: none;
+          opacity: 1;
+        }
+        .hero-card {
+          width: min(82vw, 360px, calc((100svh - 230px) * 1.586));
+          max-width: 100%;
+        }
+        .hero-copy {
+          max-width: 34ch;
+          font-size: 15px;
+        }
+        .bar {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .bar .logo {
+          font-size: 14px;
+        }
+        .bar-right {
+          gap: 10px;
+          font-size: 17px;
+        }
+        .pill {
+          font-size: 13px;
+          padding: 8px 14px;
+        }
+        .pane {
+          padding: 68px 20px;
+        }
+        .sheet > .pane:first-child {
+          border-radius: 24px 24px 0 0;
+        }
+        h2.display {
+          font-size: clamp(38px, 11vw, 54px);
+        }
+        .tools {
+          width: 100%;
+          margin-top: 26px;
+        }
+        .tools > .btn,
+        .tools > .seg {
+          max-width: 100%;
+        }
+        .seg {
+          display: flex;
+          width: 100%;
+        }
+        .seg button {
+          flex: 1;
+          padding: 10px 12px;
+        }
+        .box {
+          min-height: 0;
+          aspect-ratio: 1.08;
+          border-radius: 22px;
+        }
+        .box .nfc-card {
+          width: min(100%, 380px);
+        }
+        .kc {
+          transform: scale(0.9);
+          transform-origin: center;
+        }
+        .promise li {
+          padding: 25px 0;
+        }
+        .demo {
+          min-height: min(440px, calc(100svh - 180px));
+        }
+        .demo .nfc-card {
+          width: min(250px, 70vw);
+          top: 59%;
+          margin-left: -8%;
+        }
+        .foot {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 14px;
+        }
+        .foot .logo {
+          font-size: 25px;
+        }
+        .order-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+        .order-actions .btn {
+          width: 100%;
+        }
+      }
+      @media (max-width: 520px) and (max-height: 650px) {
+        .hero-inner {
+          gap: 10px;
+          padding-top: calc(56px + env(safe-area-inset-top, 0px));
+          padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+        }
+        .hero-card {
+          width: min(70vw, calc((100svh - 180px) * 1.586));
+        }
+        .hero-copy {
+          font-size: 14px;
+          line-height: 1.45;
+        }
+        .cue {
+          bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+        }
+        .cue::after {
+          height: 20px;
+        }
+      }
+      @media (min-width: 521px) and (max-width: 899px) {
+        .pane {
+          padding: clamp(76px, 9vw, 104px) clamp(28px, 6vw, 56px);
+        }
+        .wrap {
+          gap: 34px;
+        }
+        .box {
+          min-height: clamp(340px, 50vw, 440px);
+        }
+        .hero-inner {
+          gap: 28px;
+        }
+        .hero-card {
+          width: min(420px, 68vw);
+        }
+        .demo {
+          min-height: 490px;
+        }
+      }
+      @media (max-height: 700px) and (min-width: 521px) {
+        .hero-inner {
+          gap: 18px;
+          padding-top: 60px;
+          padding-bottom: 70px;
+        }
+        .hero-card {
+          width: min(360px, 48vw);
+        }
+        .hero-word {
+          top: 12%;
+        }
+      }
+      @media (max-width: 899px) {
+        .product-pane .visual {
+          order: -1;
+        }
+        .hero {
+          position: relative;
+          height: auto;
+          height: 100svh;
+          min-height: 560px;
+          min-height: 100svh;
+          overflow: clip;
+        }
+        .hero-inner {
+          transform: none;
+          opacity: 1;
+        }
+        .hero-word {
+          transform: translateX(-50%);
+        }
+        .hero .cue {
+          opacity: 1;
+        }
+        .bar {
+          position: absolute;
+        }
+        .sheet {
+          z-index: auto;
+        }
+        .hero-card,
+        .hero-copy {
+          flex: none;
+        }
+        .hero-card {
+          width: min(82vw, 360px);
+        }
+      }
+      @media (max-width: 520px) {
+        .hero {
+          height: auto;
+          min-height: 100svh;
+          padding-top: 68px;
+          padding-bottom: 78px;
+          display: flex;
+          align-items: center;
+        }
+        .hero-inner {
+          padding: 18px;
+          gap: clamp(16px, 3svh, 24px);
+        }
+        .hero-card {
+          width: min(82vw, 360px);
+        }
+        .hero .cue {
+          bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+        }
+        .hero-word {
+          top: 12%;
+          font-size: clamp(42px, 11vw, 64px);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <a class="logo compact" href="#top" aria-label="OneTap Las Piñas home"
+        ><span class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></span></a
+      >
+      <div class="bar-right">
+        <span class="place">Las Piñas</span
+        ><a class="pill" href="#order">Order</a>
+      </div>
+    </header>
 
-<header class="bar">
-  <a class="logo compact" href="#top" aria-label="OneTap Las Piñas home"><span class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></span></a>
-  <div class="bar-right"><span class="place">/Las Piñas</span><a class="pill" href="#order">Order</a></div>
-</header>
-
-<main class="stage" id="top">
-
-  <!-- HERO -->
-  <section class="hero" id="hero" data-zone aria-label="OneTap">
-    <div class="hero-word" aria-hidden="true">Endless Connection</div>
-    <div class="hero-inner">
-      <h1 class="hero-card">
-        <span class="tilt" style="display:block">
-          <span class="nfc-card dark" data-tilt style="display:block">
-            <span class="card-in">
-              <svg class="nfc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 9a4 4 0 0 1 0 6"/><path d="M9 7a7 7 0 0 1 0 10"/><path d="M13 5a10 10 0 0 1 0 14"/><path d="M17 3a13 13 0 0 1 0 18"/></svg>
-              <span class="logo" role="img" aria-label="ONE TAP, endless connection">
-                <span class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></span>
-                <span class="logo-sub">ENDLESS CONNECTION</span>
+    <main class="stage" id="top">
+      <!-- HERO -->
+      <section class="hero" id="hero" data-zone aria-label="OneTap">
+        <div class="hero-word" aria-hidden="true">Endless Connection</div>
+        <div class="hero-inner">
+          <h1 class="hero-card">
+            <span class="tilt" style="display: block">
+              <span class="nfc-card dark" data-tilt style="display: block">
+                <span class="card-in">
+                  <svg
+                    class="nfc-ico"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 9a4 4 0 0 1 0 6" />
+                    <path d="M9 7a7 7 0 0 1 0 10" />
+                    <path d="M13 5a10 10 0 0 1 0 14" />
+                    <path d="M17 3a13 13 0 0 1 0 18" />
+                  </svg>
+                  <span
+                    class="logo"
+                    role="img"
+                    aria-label="ONE TAP, endless connection"
+                  >
+                    <span class="logo-main"
+                      ><b>[</b><span>ONE TAP</span><b>]</b></span
+                    >
+                    <span class="logo-sub">ENDLESS CONNECTION</span>
+                  </span>
+                  <span class="card-foot">OneTap Las Piñas</span>
+                </span>
+                <span class="glare"></span>
               </span>
-              <span class="card-foot">OneTap Las Piñas</span>
             </span>
-            <span class="glare"></span>
-          </span>
-        </span>
-      </h1>
-      <p class="hero-copy">NFC cards, keychains and stands with your design and your link. Free program, no monthly subscription.</p>
-    </div>
-    <a class="cue" href="#card">Scroll to see the products</a>
-  </section>
-
-  <div class="sheet">
-
-    <!-- PRODUCT 1: CARD -->
-    <section class="pane light product-pane" id="card">
-      <div class="wrap">
-        <div class="copy">
-          <h2 class="display">NFC Business Card</h2>
-          <p class="lead">Share your contact info, socials, reviews &amp; links with ONE TAP.</p>
-          <div class="tools">
-            <p class="hint">Try it: pick a finish and type your name.</p>
-            <div class="seg" role="group" aria-label="Card finish">
-              <button type="button" aria-pressed="true" data-finish="dark">Black</button>
-              <button type="button" aria-pressed="false" data-finish="light">White</button>
-            </div>
-            <label class="field" style="max-width:380px">Name on your card
-              <input id="cardName" type="text" maxlength="28" placeholder="Your name or business" autocomplete="off">
-            </label>
-            <label class="field">Upload card design
-              <input class="design-upload" type="file" accept="image/*" data-preview="cardDesign" data-status="cardDesignStatus">
-            </label>
-            <p class="hint upload-note">Image files up to 5 MB. Preview stays on this device; attach the image in Instagram when ordering.</p>
-            <p class="status upload-status" id="cardDesignStatus" role="status" aria-live="polite"></p>
-            <a class="btn solid" href="#order" data-order="NFC Business Card"><span>Order NFC card</span></a>
-          </div>
+          </h1>
+          <p class="hero-copy">
+            NFC cards, keychains and stands with your design and your link. Free
+            program, no monthly subscription.
+          </p>
         </div>
-        <div class="visual box" data-zone>
-          <div class="nfc-card dark" id="demoCard" data-tilt>
-            <img class="custom-design" id="cardDesign" alt="Uploaded card design preview" hidden>
-            <div class="card-in">
-              <svg class="nfc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 9a4 4 0 0 1 0 6"/><path d="M9 7a7 7 0 0 1 0 10"/><path d="M13 5a10 10 0 0 1 0 14"/><path d="M17 3a13 13 0 0 1 0 18"/></svg>
-              <div class="logo" role="img" aria-label="ONE TAP, endless connection">
-                <div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div>
-                <div class="logo-sub">ENDLESS CONNECTION</div>
-              </div>
-              <div class="card-foot" id="cardFoot">Your name here</div>
-            </div>
-            <span class="glare"></span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <a class="cue" href="#card">Scroll to see the products</a>
+      </section>
 
-    <!-- PRODUCT 2: KEYCHAIN -->
-    <section class="pane dark product-pane" id="keychain">
-      <div class="wrap flip">
-        <div class="copy">
-          <h2 class="display">OneTap Keychain</h2>
-          <h3 class="sub">Small Keychain, Big Connection!</h3>
-          <p class="lead">Make your everyday keychain smarter.</p>
-          <p class="lead">Customize your design + add 1 link per keychain.</p>
-          <div class="tools">
-            <p class="hint">Pick the link it opens:</p>
-            <label class="field">Upload keychain design
-              <input class="design-upload" type="file" accept="image/*" data-preview="keychainDesign" data-status="keychainDesignStatus">
-            </label>
-            <p class="hint upload-note">Image files up to 5 MB. Preview stays on this device; attach the image in Instagram when ordering.</p>
-            <p class="status upload-status" id="keychainDesignStatus" role="status" aria-live="polite"></p>
-            <div class="chips" id="chips">
-              <button class="chip" type="button" aria-pressed="true">Instagram</button>
-              <button class="chip" type="button" aria-pressed="false">Facebook</button>
-              <button class="chip" type="button" aria-pressed="false">TikTok</button>
-              <button class="chip" type="button" aria-pressed="false">Website</button>
-              <button class="chip" type="button" aria-pressed="false">Store</button>
-              <button class="chip" type="button" aria-pressed="false">Portfolio</button>
-              <button class="chip" type="button" aria-pressed="false">Anything you want</button>
-            </div>
-            <a class="btn solid" href="#order" data-order="OneTap Keychain"><span>Order keychain</span></a>
-          </div>
-        </div>
-        <div class="visual box">
-          <div class="kc" aria-hidden="true">
-            <div class="kc-ring"></div>
-            <div class="kc-swing">
-              <div class="kc-tag">
-                <img class="custom-design" id="keychainDesign" alt="Uploaded keychain design preview" hidden>
-                <span class="kc-coil"></span>
-                <span class="kc-hole"></span>
-                <div class="logo compact"><div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div></div>
-                <div class="kc-link"><span id="kcLabel">instagram.com/you</span></div>
-                <span class="kc-gloss"></span>
+      <div class="sheet">
+        <!-- PRODUCT 1: CARD -->
+        <section class="pane light product-pane" id="card">
+          <div class="wrap">
+            <div class="copy">
+              <h2 class="display">NFC Business Card</h2>
+              <p class="lead">
+                Share your contact info, socials, reviews &amp; links with ONE
+                TAP.
+              </p>
+              <div class="tools">
+                <p class="hint">Try it: pick a finish and type your name.</p>
+                <div class="seg" role="group" aria-label="Card finish">
+                  <button type="button" aria-pressed="true" data-finish="dark">
+                    Black
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed="false"
+                    data-finish="light"
+                  >
+                    White
+                  </button>
+                </div>
+                <label class="field" style="max-width: 380px"
+                  >Name on your card
+                  <input
+                    id="cardName"
+                    type="text"
+                    maxlength="28"
+                    placeholder="Your name or business"
+                    autocomplete="off"
+                  />
+                </label>
+                <label class="field"
+                  >Upload card design
+                  <input
+                    class="design-upload"
+                    type="file"
+                    accept="image/*"
+                    data-preview="cardDesign"
+                    data-status="cardDesignStatus"
+                  />
+                </label>
+                <p class="hint upload-note">
+                  Image files up to 5 MB. Preview stays on this device; attach
+                  the image in Instagram when ordering.
+                </p>
+                <p
+                  class="status upload-status"
+                  id="cardDesignStatus"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+                <a
+                  class="btn solid"
+                  href="#order"
+                  data-order="NFC Business Card"
+                  ><span>Order NFC card</span></a
+                >
               </div>
             </div>
-          </div>
-          <span class="sr-only" id="kcLive" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></span>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUCT 3: STAND -->
-    <section class="pane light product-pane" id="stand">
-      <div class="wrap">
-        <div class="copy">
-          <h2 class="display">NFC Business Stand</h2>
-          <p class="lead">Perfect for stores, cafés, salons &amp; businesses. Turn walk-in customers into followers and make it easier to get reviews.</p>
-          <div class="tools">
-            <label class="field">Upload stand design
-              <input class="design-upload" type="file" accept="image/*" data-preview="standDesign" data-status="standDesignStatus">
-            </label>
-            <p class="hint upload-note">Image files up to 5 MB. Preview stays on this device; attach the image in Instagram when ordering.</p>
-            <p class="status upload-status" id="standDesignStatus" role="status" aria-live="polite"></p>
-            <fieldset class="opts">
-              <legend>Choose your Stand Package:</legend>
-              <label class="opt"><input type="radio" name="pkg" value="2" checked><span class="dot"></span><span><b>Package 1</b><small>Add 2 social links</small></span></label>
-              <label class="opt"><input type="radio" name="pkg" value="3"><span class="dot"></span><span><b>Package 2</b><small>Add 3 social links</small></span></label>
-            </fieldset>
-            <a class="btn solid" id="standOrder" href="#order" data-order="NFC Business Stand - Package 1 (2 social links)"><span>Order stand</span></a>
-          </div>
-          <p class="closing">More followers. More reviews. More connections.</p>
-        </div>
-        <div class="visual box">
-          <div class="stand" id="standVis" data-links="2" aria-hidden="true">
-            <div class="stand-body">
-              <img class="custom-design" id="standDesign" alt="Uploaded stand design preview" hidden>
-              <div class="logo compact"><div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div></div>
-              <p class="stand-msg">Follow us and leave a review</p>
-              <div class="srows">
-                <div class="srow">Facebook</div>
-                <div class="srow">Instagram</div>
-                <div class="r3"><div><div class="srow">TikTok</div></div></div>
-              </div>
-              <div class="stand-tap">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 9a4 4 0 0 1 0 6"/><path d="M9 7a7 7 0 0 1 0 10"/><path d="M13 5a10 10 0 0 1 0 14"/><path d="M17 3a13 13 0 0 1 0 18"/></svg>
-                Tap here
+            <div class="visual box" data-zone>
+              <div class="nfc-card dark" id="demoCard" data-tilt>
+                <img
+                  class="custom-design"
+                  id="cardDesign"
+                  alt="Uploaded card design preview"
+                  hidden
+                />
+                <div class="card-in">
+                  <svg
+                    class="nfc-ico"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 9a4 4 0 0 1 0 6" />
+                    <path d="M9 7a7 7 0 0 1 0 10" />
+                    <path d="M13 5a10 10 0 0 1 0 14" />
+                    <path d="M17 3a13 13 0 0 1 0 18" />
+                  </svg>
+                  <div
+                    class="logo"
+                    role="img"
+                    aria-label="ONE TAP, endless connection"
+                  >
+                    <div class="logo-main">
+                      <b>[</b><span>ONE TAP</span><b>]</b>
+                    </div>
+                    <div class="logo-sub">ENDLESS CONNECTION</div>
+                  </div>
+                  <div class="card-foot" id="cardFoot">Your name here</div>
+                </div>
+                <span class="glare"></span>
               </div>
             </div>
-            <div class="stand-base"></div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- PROMISE -->
-    <section class="pane dark" id="every">
-      <div class="promise">
-        <h2 class="display">Every OneTap product</h2>
-        <ul>
-          <li><h3>Customize the design</h3><p>Your design goes on the card, the keychain and the stand.</p></li>
-          <li><h3>Put your link on it</h3><p>Instagram, Facebook, TikTok, your website, store or portfolio. Anything you want.</p></li>
-          <li><h3>Free program, no monthly subscription</h3><p>No monthly fees. Nothing to renew.</p></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- TAP DEMO -->
-    <section class="pane light" id="how">
-      <div class="wrap flip">
-        <div class="copy">
-          <h2 class="display">Just TAP → OPEN → CONNECT.</h2>
-          <div class="steps" id="steps">
-            <div class="step on"><b>Tap</b><p>Hold a phone near your OneTap.</p></div>
-            <div class="step"><b>Open</b><p>Your link opens right away.</p></div>
-            <div class="step"><b>Connect</b><p>They follow you, save your contact or leave a review.</p></div>
-          </div>
-        </div>
-        <div class="visual box demo" id="demo" data-state="idle">
-          <div class="nfc-card dark" aria-hidden="true">
-            <div class="card-in">
-              <svg class="nfc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 9a4 4 0 0 1 0 6"/><path d="M9 7a7 7 0 0 1 0 10"/><path d="M13 5a10 10 0 0 1 0 14"/><path d="M17 3a13 13 0 0 1 0 18"/></svg>
-              <div class="logo compact"><div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div></div>
+        <!-- PRODUCT 2: KEYCHAIN -->
+        <section class="pane dark product-pane" id="keychain">
+          <div class="wrap flip">
+            <div class="copy">
+              <h2 class="display">OneTap Keychain</h2>
+              <h3 class="sub">Small Keychain, Big Connection!</h3>
+              <p class="lead">Make your everyday keychain smarter.</p>
+              <p class="lead">
+                Customize your design + add 1 link per keychain.
+              </p>
+              <div class="tools">
+                <p class="hint">Pick the link it opens:</p>
+                <label class="field"
+                  >Upload keychain design
+                  <input
+                    class="design-upload"
+                    type="file"
+                    accept="image/*"
+                    data-preview="keychainDesign"
+                    data-status="keychainDesignStatus"
+                  />
+                </label>
+                <p class="hint upload-note">
+                  Image files up to 5 MB. Preview stays on this device; attach
+                  the image in Instagram when ordering.
+                </p>
+                <p
+                  class="status upload-status"
+                  id="keychainDesignStatus"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+                <div class="chips" id="chips">
+                  <button class="chip" type="button" aria-pressed="true">
+                    Instagram
+                  </button>
+                  <button class="chip" type="button" aria-pressed="false">
+                    Facebook
+                  </button>
+                  <button class="chip" type="button" aria-pressed="false">
+                    TikTok
+                  </button>
+                  <button class="chip" type="button" aria-pressed="false">
+                    Website
+                  </button>
+                  <button class="chip" type="button" aria-pressed="false">
+                    Store
+                  </button>
+                  <button class="chip" type="button" aria-pressed="false">
+                    Portfolio
+                  </button>
+                  <button class="chip" type="button" aria-pressed="false">
+                    Anything you want
+                  </button>
+                </div>
+                <a class="btn solid" href="#order" data-order="OneTap Keychain"
+                  ><span>Order keychain</span></a
+                >
+              </div>
+            </div>
+            <div class="visual box">
+              <div class="kc" aria-hidden="true">
+                <div class="kc-ring"></div>
+                <div class="kc-swing">
+                  <div class="kc-tag">
+                    <img
+                      class="custom-design"
+                      id="keychainDesign"
+                      alt="Uploaded keychain design preview"
+                      hidden
+                    />
+                    <span class="kc-coil"></span>
+                    <span class="kc-hole"></span>
+                    <div class="logo compact">
+                      <div class="logo-main">
+                        <b>[</b><span>ONE TAP</span><b>]</b>
+                      </div>
+                    </div>
+                    <div class="kc-link">
+                      <span id="kcLabel">instagram.com/you</span>
+                    </div>
+                    <span class="kc-gloss"></span>
+                  </div>
+                </div>
+              </div>
+              <span
+                class="sr-only"
+                id="kcLive"
+                aria-live="polite"
+                style="
+                  position: absolute;
+                  width: 1px;
+                  height: 1px;
+                  overflow: hidden;
+                  clip: rect(0 0 0 0);
+                "
+              ></span>
             </div>
           </div>
-          <div class="phone" aria-hidden="true">
-            <span class="island"></span>
-            <div class="screen s-lock"><span class="time">10:02</span><p>Hold near a OneTap</p></div>
-            <div class="screen s-open">
-              <span class="avatar">Y</span>
-              <h4>Your Name</h4>
-              <small>OneTap Las Piñas</small>
-              <div class="lnk"><span>Instagram</span><span>Facebook</span><span>Website</span><span class="alt">Save contact</span></div>
+        </section>
+
+        <!-- PRODUCT 3: STAND -->
+        <section class="pane light product-pane" id="stand">
+          <div class="wrap">
+            <div class="copy">
+              <h2 class="display">NFC Business Stand</h2>
+              <p class="lead">
+                Perfect for stores, cafés, salons &amp; businesses. Turn walk-in
+                customers into followers and make it easier to get reviews.
+              </p>
+              <div class="tools">
+                <label class="field"
+                  >Upload stand design
+                  <input
+                    class="design-upload"
+                    type="file"
+                    accept="image/*"
+                    data-preview="standDesign"
+                    data-status="standDesignStatus"
+                  />
+                </label>
+                <p class="hint upload-note">
+                  Image files up to 5 MB. Preview stays on this device; attach
+                  the image in Instagram when ordering.
+                </p>
+                <p
+                  class="status upload-status"
+                  id="standDesignStatus"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+                <fieldset class="opts">
+                  <legend>Choose your Stand Package:</legend>
+                  <label class="opt"
+                    ><input type="radio" name="pkg" value="2" checked /><span
+                      class="dot"
+                    ></span
+                    ><span
+                      ><b>Package 1</b><small>Add 2 social links</small></span
+                    ></label
+                  >
+                  <label class="opt"
+                    ><input type="radio" name="pkg" value="3" /><span
+                      class="dot"
+                    ></span
+                    ><span
+                      ><b>Package 2</b><small>Add 3 social links</small></span
+                    ></label
+                  >
+                </fieldset>
+                <a
+                  class="btn solid"
+                  id="standOrder"
+                  href="#order"
+                  data-order="NFC Business Stand - Package 1 (2 social links)"
+                  ><span>Order stand</span></a
+                >
+              </div>
+              <p class="closing">
+                More followers. More reviews. More connections.
+              </p>
+            </div>
+            <div class="visual box">
+              <div
+                class="stand"
+                id="standVis"
+                data-links="2"
+                aria-hidden="true"
+              >
+                <div class="stand-body">
+                  <img
+                    class="custom-design"
+                    id="standDesign"
+                    alt="Uploaded stand design preview"
+                    hidden
+                  />
+                  <div class="logo compact">
+                    <div class="logo-main">
+                      <b>[</b><span>ONE TAP</span><b>]</b>
+                    </div>
+                  </div>
+                  <p class="stand-msg">Follow us and leave a review</p>
+                  <div class="srows">
+                    <div class="srow">Facebook</div>
+                    <div class="srow">Instagram</div>
+                    <div class="r3">
+                      <div><div class="srow">TikTok</div></div>
+                    </div>
+                  </div>
+                  <div class="stand-tap">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    >
+                      <path d="M5 9a4 4 0 0 1 0 6" />
+                      <path d="M9 7a7 7 0 0 1 0 10" />
+                      <path d="M13 5a10 10 0 0 1 0 14" />
+                      <path d="M17 3a13 13 0 0 1 0 18" />
+                    </svg>
+                    Tap here
+                  </div>
+                </div>
+                <div class="stand-base"></div>
+              </div>
             </div>
           </div>
-          <div class="ripple" aria-hidden="true"><i></i><i></i><i></i></div>
-          <button class="btn solid replay" id="replay" type="button"><span>Tap again</span></button>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- ORDER -->
-    <section class="pane dark" id="order">
-      <div class="wrap" style="align-items:start">
-        <div class="copy">
-          <h2 class="display">Your design. Your link. Your OneTap.</h2>
-          <p class="lead">Tell us what you want and we will set it up. Pick a product, add your name and the links you want on it.</p>
-        </div>
-        <div class="order-form" role="group" aria-label="Order details">
-          <label class="field">Product
-            <select id="oProduct">
-              <option>NFC Business Card</option>
-              <option>OneTap Keychain</option>
-              <option>NFC Business Stand - Package 1 (2 social links)</option>
-              <option>NFC Business Stand - Package 2 (3 social links)</option>
-            </select>
-          </label>
-          <label class="field">Your name or business
-            <input id="oName" type="text" placeholder="Name" autocomplete="name">
-          </label>
-          <label class="field">Link(s) to put on it
-            <textarea id="oLinks" placeholder="Instagram, Facebook, TikTok, website, store..."></textarea>
-          </label>
-          <div class="order-actions">
-            <a class="btn solid" id="msgLink" href="https://www.instagram.com/direct/t/17845758288551027/" target="_blank" rel="noopener"><span>Message us on Instagram</span></a>
-            <button class="btn" id="copyOrder" type="button"><span>Copy order message</span></button>
+        <!-- PROMISE -->
+        <section class="pane dark" id="every">
+          <div class="promise">
+            <h2 class="display">Every OneTap product</h2>
+            <ul>
+              <li>
+                <h3>Customize the design</h3>
+                <p>Your design goes on the card, the keychain and the stand.</p>
+              </li>
+              <li>
+                <h3>Put your link on it</h3>
+                <p>
+                  Instagram, Facebook, TikTok, your website, store or portfolio.
+                  Anything you want.
+                </p>
+              </li>
+              <li>
+                <h3>Free program, no monthly subscription</h3>
+                <p>No monthly fees. Nothing to renew.</p>
+              </li>
+            </ul>
           </div>
-          <p class="hint" style="color:#bdbdbd">Press the Instagram button. Your order message is copied first, so just paste it in our chat.</p>
-          <p class="status" id="status" role="status"></p>
-        </div>
+        </section>
+
+        <!-- TAP DEMO -->
+        <section class="pane light" id="how">
+          <div class="wrap flip">
+            <div class="copy">
+              <h2 class="display">Just TAP → OPEN → CONNECT.</h2>
+              <div class="steps" id="steps">
+                <div class="step on">
+                  <b>Tap</b>
+                  <p>Hold a phone near your OneTap.</p>
+                </div>
+                <div class="step">
+                  <b>Open</b>
+                  <p>Your link opens right away.</p>
+                </div>
+                <div class="step">
+                  <b>Connect</b>
+                  <p>They follow you, save your contact or leave a review.</p>
+                </div>
+              </div>
+            </div>
+            <div class="visual box demo" id="demo" data-state="idle">
+              <div class="nfc-card dark" aria-hidden="true">
+                <div class="card-in">
+                  <svg
+                    class="nfc-ico"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  >
+                    <path d="M5 9a4 4 0 0 1 0 6" />
+                    <path d="M9 7a7 7 0 0 1 0 10" />
+                    <path d="M13 5a10 10 0 0 1 0 14" />
+                    <path d="M17 3a13 13 0 0 1 0 18" />
+                  </svg>
+                  <div class="logo compact">
+                    <div class="logo-main">
+                      <b>[</b><span>ONE TAP</span><b>]</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="phone" aria-hidden="true">
+                <span class="island"></span>
+                <div class="screen s-lock">
+                  <span class="time">10:02</span>
+                  <p>Hold near a OneTap</p>
+                </div>
+                <div class="screen s-open">
+                  <span class="avatar">Y</span>
+                  <h4>Your Name</h4>
+                  <small>OneTap Las Piñas</small>
+                  <div class="lnk">
+                    <span>Instagram</span><span>Facebook</span
+                    ><span>Website</span><span class="alt">Save contact</span>
+                  </div>
+                </div>
+              </div>
+              <div class="ripple" aria-hidden="true"><i></i><i></i><i></i></div>
+              <button class="btn solid replay" id="replay" type="button">
+                <span>Tap again</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ORDER -->
+        <section class="pane dark" id="order">
+          <div class="wrap" style="align-items: start">
+            <div class="copy">
+              <h2 class="display">Your design. Your link. Your OneTap.</h2>
+              <p class="lead">
+                Tell us what you want and we will set it up. Pick a product, add
+                your name and the links you want on it.
+              </p>
+            </div>
+            <div class="order-form" role="group" aria-label="Order details">
+              <label class="field"
+                >Product
+                <select id="oProduct">
+                  <option>NFC Business Card</option>
+                  <option>OneTap Keychain</option>
+                  <option>
+                    NFC Business Stand - Package 1 (2 social links)
+                  </option>
+                  <option>
+                    NFC Business Stand - Package 2 (3 social links)
+                  </option>
+                </select>
+              </label>
+              <label class="field"
+                >Your name or business
+                <input
+                  id="oName"
+                  type="text"
+                  placeholder="Name"
+                  autocomplete="name"
+                />
+              </label>
+              <label class="field"
+                >Link(s) to put on it
+                <textarea
+                  id="oLinks"
+                  placeholder="Instagram, Facebook, TikTok, website, store..."
+                ></textarea>
+              </label>
+              <div class="order-actions">
+                <a
+                  class="btn solid"
+                  id="msgLink"
+                  href="https://www.instagram.com/direct/t/17845758288551027/"
+                  target="_blank"
+                  rel="noopener"
+                  ><span>Message us on Instagram</span></a
+                >
+                <button class="btn" id="copyOrder" type="button">
+                  <span>Copy order message</span>
+                </button>
+              </div>
+              <p class="hint" style="color: #bdbdbd">
+                Press the Instagram button. Your order message is copied first,
+                so just paste it in our chat.
+              </p>
+              <p class="status" id="status" role="status"></p>
+            </div>
+          </div>
+          <footer class="foot">
+            <div
+              class="logo"
+              role="img"
+              aria-label="ONE TAP, endless connection"
+            >
+              <div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div>
+              <div class="logo-sub">ENDLESS CONNECTION</div>
+            </div>
+            <p>OneTap Las Piñas &middot; 2026</p>
+          </footer>
+        </section>
       </div>
-      <footer class="foot">
-        <div class="logo" role="img" aria-label="ONE TAP, endless connection">
-          <div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div>
-          <div class="logo-sub">ENDLESS CONNECTION</div>
-        </div>
-        <p>OneTap Las Piñas &middot; 2026</p>
-      </footer>
-    </section>
+    </main>
 
-  </div>
-</main>
+    <script>
+      (function () {
+        var $ = function (s, r) {
+          return (r || document).querySelector(s);
+        };
+        var $$ = function (s, r) {
+          return Array.prototype.slice.call(
+            (r || document).querySelectorAll(s),
+          );
+        };
+        var reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        var root = document.documentElement;
 
-<script>
-(function(){
-  var $ = function(s,r){return (r||document).querySelector(s)};
-  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var root = document.documentElement;
+        /* Keep design uploads local and preview them on their matching product. */
+        $$(".design-upload").forEach(function (input) {
+          input.addEventListener("change", function () {
+            var file = input.files && input.files[0];
+            var preview = $("#" + input.getAttribute("data-preview"));
+            var status = $("#" + input.getAttribute("data-status"));
+            if (!file) return;
+            if (file.type.indexOf("image/") !== 0) {
+              input.value = "";
+              status.textContent = "Choose an image file.";
+              return;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+              input.value = "";
+              status.textContent = "Choose an image smaller than 5 MB.";
+              return;
+            }
+            var oldUrl = preview.getAttribute("data-object-url");
+            if (oldUrl) URL.revokeObjectURL(oldUrl);
+            var imageUrl = URL.createObjectURL(file);
+            preview.onload = function () {
+              status.textContent =
+                "Design preview ready. Attach the original image in Instagram when ordering.";
+            };
+            preview.onerror = function () {
+              URL.revokeObjectURL(imageUrl);
+              preview.removeAttribute("src");
+              preview.removeAttribute("data-object-url");
+              preview.hidden = true;
+              input.value = "";
+              status.textContent =
+                "This image could not be previewed. Try another image file.";
+            };
+            preview.setAttribute("data-object-url", imageUrl);
+            preview.src = imageUrl;
+            preview.hidden = false;
+          });
+        });
 
-  /* Keep design uploads local and preview them on their matching product. */
-  $$('.design-upload').forEach(function(input){
-    input.addEventListener('change', function(){
-      var file = input.files && input.files[0];
-      var preview = $('#' + input.getAttribute('data-preview'));
-      var status = $('#' + input.getAttribute('data-status'));
-      if(!file) return;
-      if(file.type.indexOf('image/') !== 0){
-        input.value = '';
-        status.textContent = 'Choose an image file.';
-        return;
-      }
-      if(file.size > 5 * 1024 * 1024){
-        input.value = '';
-        status.textContent = 'Choose an image smaller than 5 MB.';
-        return;
-      }
-      var oldUrl = preview.getAttribute('data-object-url');
-      if(oldUrl) URL.revokeObjectURL(oldUrl);
-      var imageUrl = URL.createObjectURL(file);
-      preview.onload = function(){
-        status.textContent = 'Design preview ready. Attach the original image in Instagram when ordering.';
-      };
-      preview.onerror = function(){
-        URL.revokeObjectURL(imageUrl);
-        preview.removeAttribute('src');
-        preview.removeAttribute('data-object-url');
-        preview.hidden = true;
-        input.value = '';
-        status.textContent = 'This image could not be previewed. Try another image file.';
-      };
-      preview.setAttribute('data-object-url', imageUrl);
-      preview.src = imageUrl;
-      preview.hidden = false;
-    });
-  });
+        /* Discourage casual saving of artwork; browser-rendered content can still be captured. */
+        document.addEventListener("contextmenu", function (e) {
+          if (e.target.closest("img,svg,.nfc-card,.kc,.stand,.phone"))
+            e.preventDefault();
+        });
+        document.addEventListener("dragstart", function (e) {
+          if (e.target.closest("img,svg,.nfc-card,.kc,.stand,.phone"))
+            e.preventDefault();
+        });
 
-  /* Discourage casual saving of artwork; browser-rendered content can still be captured. */
-  document.addEventListener('contextmenu', function(e){
-    if(e.target.closest('img,svg,.nfc-card,.kc,.stand,.phone')) e.preventDefault();
-  });
-  document.addEventListener('dragstart', function(e){
-    if(e.target.closest('img,svg,.nfc-card,.kc,.stand,.phone')) e.preventDefault();
-  });
+        /* Order link: opens when customers press Message us */
+        var ORDER_LINK = "https://www.instagram.com/onetaplaspinas/";
 
-  /* Order link: opens when customers press Message us */
-  var ORDER_LINK = 'https://www.instagram.com/onetaplaspinas/';
+        /* Split the tagline into letters so it spans the logo width and can fill while loading */
+        $$(".logo-sub").forEach(function (el) {
+          var t = el.textContent.trim();
+          el.setAttribute("role", "img");
+          el.setAttribute("aria-label", t);
+          el.textContent = "";
+          t.split("").forEach(function (ch, i) {
+            var s = document.createElement("i");
+            s.setAttribute("aria-hidden", "true");
+            if (ch === " ") {
+              s.className = "sp";
+            } else {
+              s.textContent = ch;
+            }
+            s.style.setProperty("--i", i);
+            el.appendChild(s);
+          });
+        });
 
-  /* Split the tagline into letters so it spans the logo width and can fill while loading */
-  $$('.logo-sub').forEach(function(el){
-    var t = el.textContent.trim();
-    el.setAttribute('role','img');
-    el.setAttribute('aria-label',t);
-    el.textContent = '';
-    t.split('').forEach(function(ch,i){
-      var s = document.createElement('i');
-      s.setAttribute('aria-hidden','true');
-      if(ch === ' '){ s.className = 'sp'; } else { s.textContent = ch; }
-      s.style.setProperty('--i', i);
-      el.appendChild(s);
-    });
-  });
+        /* Hero scroll progress */
+        var hero = $("#hero"),
+          ticking = false;
+        function update() {
+          var p = Math.min(1, Math.max(0, window.scrollY / window.innerHeight));
+          hero.style.setProperty("--p", p.toFixed(3));
+          ticking = false;
+        }
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (!ticking) {
+              ticking = true;
+              requestAnimationFrame(update);
+            }
+          },
+          { passive: true },
+        );
+        update();
 
-  /* Hero scroll progress */
-  var hero = $('#hero'), ticking = false;
-  function update(){
-    var p = Math.min(1, Math.max(0, window.scrollY / window.innerHeight));
-    hero.style.setProperty('--p', p.toFixed(3));
-    ticking = false;
-  }
-  window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, {passive:true});
-  update();
+        /* Card tilt */
+        if (!reduce) {
+          $$("[data-tilt]").forEach(function (card) {
+            var zone = card.closest("[data-zone]") || card;
+            zone.addEventListener("pointermove", function (e) {
+              var r = card.getBoundingClientRect();
+              var x = (e.clientX - r.left) / r.width - 0.5;
+              var y = (e.clientY - r.top) / r.height - 0.5;
+              x = Math.max(-0.8, Math.min(0.8, x));
+              y = Math.max(-0.8, Math.min(0.8, y));
+              card.style.setProperty("--ry", (x * 16).toFixed(2) + "deg");
+              card.style.setProperty("--rx", (-y * 16).toFixed(2) + "deg");
+              card.style.setProperty(
+                "--gx",
+                ((x + 0.5) * 100).toFixed(1) + "%",
+              );
+              card.style.setProperty(
+                "--gy",
+                ((y + 0.5) * 100).toFixed(1) + "%",
+              );
+            });
+            zone.addEventListener("pointerleave", function () {
+              card.style.setProperty("--ry", "0deg");
+              card.style.setProperty("--rx", "0deg");
+            });
+          });
+        }
 
-  /* Card tilt */
-  if(!reduce){
-    $$('[data-tilt]').forEach(function(card){
-      var zone = card.closest('[data-zone]') || card;
-      zone.addEventListener('pointermove', function(e){
-        var r = card.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width - .5;
-        var y = (e.clientY - r.top) / r.height - .5;
-        x = Math.max(-.8, Math.min(.8, x)); y = Math.max(-.8, Math.min(.8, y));
-        card.style.setProperty('--ry', (x * 16).toFixed(2) + 'deg');
-        card.style.setProperty('--rx', (-y * 16).toFixed(2) + 'deg');
-        card.style.setProperty('--gx', ((x + .5) * 100).toFixed(1) + '%');
-        card.style.setProperty('--gy', ((y + .5) * 100).toFixed(1) + '%');
-      });
-      zone.addEventListener('pointerleave', function(){
-        card.style.setProperty('--ry','0deg'); card.style.setProperty('--rx','0deg');
-      });
-    });
-  }
+        /* Card finish + name */
+        var demoCard = $("#demoCard");
+        $$("[data-finish]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            $$("[data-finish]").forEach(function (x) {
+              x.setAttribute("aria-pressed", x === b ? "true" : "false");
+            });
+            demoCard.classList.remove("dark", "light");
+            demoCard.classList.add(b.getAttribute("data-finish"));
+          });
+        });
+        var nameIn = $("#cardName"),
+          foot = $("#cardFoot");
+        nameIn.addEventListener("input", function () {
+          foot.textContent = nameIn.value.trim() || "Your name here";
+        });
 
-  /* Card finish + name */
-  var demoCard = $('#demoCard');
-  $$('[data-finish]').forEach(function(b){
-    b.addEventListener('click', function(){
-      $$('[data-finish]').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      demoCard.classList.remove('dark','light');
-      demoCard.classList.add(b.getAttribute('data-finish'));
-    });
-  });
-  var nameIn = $('#cardName'), foot = $('#cardFoot');
-  nameIn.addEventListener('input', function(){ foot.textContent = nameIn.value.trim() || 'Your name here'; });
+        /* Keychain link chips */
+        var KC = {
+          Instagram: "instagram.com/you",
+          Facebook: "facebook.com/you",
+          TikTok: "tiktok.com/@you",
+          Website: "yourwebsite.com",
+          Store: "yourstore.com",
+          Portfolio: "yourportfolio.com",
+          "Anything you want": "yourlink.com",
+        };
+        var kcLabel = $("#kcLabel"),
+          kcLive = $("#kcLive");
+        $$("#chips .chip").forEach(function (c) {
+          c.addEventListener("click", function () {
+            $$("#chips .chip").forEach(function (x) {
+              x.setAttribute("aria-pressed", x === c ? "true" : "false");
+            });
+            kcLabel.classList.add("swap");
+            setTimeout(function () {
+              kcLabel.textContent = KC[c.textContent];
+              kcLabel.classList.remove("swap");
+              kcLive.textContent = "Keychain opens " + KC[c.textContent];
+            }, 150);
+          });
+        });
 
-  /* Keychain link chips */
-  var KC = {
-    'Instagram':'instagram.com/you','Facebook':'facebook.com/you','TikTok':'tiktok.com/@you',
-    'Website':'yourwebsite.com','Store':'yourstore.com','Portfolio':'yourportfolio.com','Anything you want':'yourlink.com'
-  };
-  var kcLabel = $('#kcLabel'), kcLive = $('#kcLive');
-  $$('#chips .chip').forEach(function(c){
-    c.addEventListener('click', function(){
-      $$('#chips .chip').forEach(function(x){ x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
-      kcLabel.classList.add('swap');
-      setTimeout(function(){
-        kcLabel.textContent = KC[c.textContent];
-        kcLabel.classList.remove('swap');
-        kcLive.textContent = 'Keychain opens ' + KC[c.textContent];
-      }, 150);
-    });
-  });
+        /* Stand package */
+        var standVis = $("#standVis"),
+          standOrder = $("#standOrder");
+        var PKG = {
+          2: "NFC Business Stand - Package 1 (2 social links)",
+          3: "NFC Business Stand - Package 2 (3 social links)",
+        };
+        $$("input[name=pkg]").forEach(function (r) {
+          r.addEventListener("change", function () {
+            standVis.setAttribute("data-links", r.value);
+            standOrder.setAttribute("data-order", PKG[r.value]);
+          });
+        });
 
-  /* Stand package */
-  var standVis = $('#standVis'), standOrder = $('#standOrder');
-  var PKG = {
-    '2':'NFC Business Stand - Package 1 (2 social links)',
-    '3':'NFC Business Stand - Package 2 (3 social links)'
-  };
-  $$('input[name=pkg]').forEach(function(r){
-    r.addEventListener('change', function(){
-      standVis.setAttribute('data-links', r.value);
-      standOrder.setAttribute('data-order', PKG[r.value]);
-    });
-  });
+        /* Tap demo */
+        var demo = $("#demo"),
+          steps = $$("#steps .step"),
+          timers = [];
+        function setStep(n) {
+          steps.forEach(function (s, i) {
+            s.classList.toggle("on", i === n);
+          });
+        }
+        function clearTimers() {
+          timers.forEach(clearTimeout);
+          timers = [];
+        }
+        function runDemo() {
+          clearTimers();
+          demo.setAttribute("data-state", "idle");
+          demo.classList.remove("go");
+          setStep(0);
+          timers.push(
+            setTimeout(function () {
+              void demo.offsetWidth;
+              demo.classList.add("go");
+              demo.setAttribute("data-state", "open");
+              setStep(1);
+              timers.push(
+                setTimeout(function () {
+                  setStep(2);
+                }, 1200),
+              );
+            }, 700),
+          );
+        }
+        $("#replay").addEventListener("click", runDemo);
+        if ("IntersectionObserver" in window) {
+          var seen = false;
+          new IntersectionObserver(
+            function (entries, obs) {
+              entries.forEach(function (en) {
+                if (en.isIntersecting && !seen) {
+                  seen = true;
+                  runDemo();
+                  obs.disconnect();
+                }
+              });
+            },
+            { threshold: 0.55 },
+          ).observe(demo);
+        } else {
+          runDemo();
+        }
 
-  /* Tap demo */
-  var demo = $('#demo'), steps = $$('#steps .step'), timers = [];
-  function setStep(n){ steps.forEach(function(s,i){ s.classList.toggle('on', i === n); }); }
-  function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
-  function runDemo(){
-    clearTimers();
-    demo.setAttribute('data-state','idle');
-    demo.classList.remove('go');
-    setStep(0);
-    timers.push(setTimeout(function(){
-      void demo.offsetWidth;
-      demo.classList.add('go');
-      demo.setAttribute('data-state','open');
-      setStep(1);
-      timers.push(setTimeout(function(){ setStep(2); }, 1200));
-    }, 700));
-  }
-  $('#replay').addEventListener('click', runDemo);
-  if('IntersectionObserver' in window){
-    var seen = false;
-    new IntersectionObserver(function(entries, obs){
-      entries.forEach(function(en){
-        if(en.isIntersecting && !seen){ seen = true; runDemo(); obs.disconnect(); }
-      });
-    }, {threshold:.55}).observe(demo);
-  } else { runDemo(); }
+        /* Order buttons */
+        var oProduct = $("#oProduct");
+        $$("[data-order]").forEach(function (a) {
+          a.addEventListener("click", function (e) {
+            e.preventDefault();
+            var v = a.getAttribute("data-order");
+            for (var i = 0; i < oProduct.options.length; i++) {
+              if (oProduct.options[i].text === v) {
+                oProduct.selectedIndex = i;
+              }
+            }
+            $("#order").scrollIntoView({
+              behavior: reduce ? "auto" : "smooth",
+            });
+          });
+        });
+        var msgLink = $("#msgLink");
+        if (ORDER_LINK) {
+          msgLink.href = ORDER_LINK;
+        }
 
-  /* Order buttons */
-  var oProduct = $('#oProduct');
-  $$('[data-order]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      var v = a.getAttribute('data-order');
-      for(var i = 0; i < oProduct.options.length; i++){ if(oProduct.options[i].text === v){ oProduct.selectedIndex = i; } }
-      $('#order').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
-    });
-  });
-  var msgLink = $('#msgLink');
-  if(ORDER_LINK){ msgLink.href = ORDER_LINK; }
-
-  var status = $('#status');
-  function buildMessage(){
-    var name = $('#oName').value.trim() || '(name)';
-    var links = $('#oLinks').value.trim() || '(links)';
-    var message = 'Hi OneTap Las Pi\u00f1as! I want to order: ' + oProduct.value + '.\nName: ' + name + '\nLink(s): ' + links;
-    if($$('.design-upload').some(function(input){ return input.files && input.files.length; })){
-      message += '\nCustom design: I will attach the image in Instagram chat.';
-    }
-    return message;
-  }
-  function copyOrder(){
-    var text = buildMessage();
-    function ok(){ status.textContent = 'Copied. Paste it in our Instagram chat to place your order.'; }
-    function fallback(){
-      var ta = document.createElement('textarea');
-      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.appendChild(ta); ta.select();
-      try{ document.execCommand('copy'); ok(); }catch(err){ status.textContent = 'Could not copy. Select the details above and send them to us.'; }
-      document.body.removeChild(ta);
-    }
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(ok, fallback);
-    } else { fallback(); }
-  }
-  $('#copyOrder').addEventListener('click', copyOrder);
-  msgLink.addEventListener('click', copyOrder);
-  })();
-</script>
-</body>
+        var status = $("#status");
+        function buildMessage() {
+          var name = $("#oName").value.trim() || "(name)";
+          var links = $("#oLinks").value.trim() || "(links)";
+          var message =
+            "Hi OneTap Las Pi\u00f1as! I want to order: " +
+            oProduct.value +
+            ".\nName: " +
+            name +
+            "\nLink(s): " +
+            links;
+          if (
+            $$(".design-upload").some(function (input) {
+              return input.files && input.files.length;
+            })
+          ) {
+            message +=
+              "\nCustom design: I will attach the image in Instagram chat.";
+          }
+          return message;
+        }
+        function copyOrder() {
+          var text = buildMessage();
+          function ok() {
+            status.textContent =
+              "Copied. Paste it in our Instagram chat to place your order.";
+          }
+          function fallback() {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand("copy");
+              ok();
+            } catch (err) {
+              status.textContent =
+                "Could not copy. Select the details above and send them to us.";
+            }
+            document.body.removeChild(ta);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(ok, fallback);
+          } else {
+            fallback();
+          }
+        }
+        $("#copyOrder").addEventListener("click", copyOrder);
+        msgLink.addEventListener("click", copyOrder);
+      })();
+    </script>
+  </body>
 </html>
