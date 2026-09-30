@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <meta name="theme-color" content="#000000" />
     <title>OneTap Las Piñas</title>
@@ -1240,228 +1240,148 @@
         color: #9a9a9a;
       }
 
+      /* ===== MOBILE FIRST: ≤520px ===== */
       @media (max-width: 520px) {
+        /* Viewport & text scaling */
+        html { -webkit-text-size-adjust: 100%; }
+
+        /* Header - keep fixed, just shrink */
+        .bar {
+          position: fixed;
+          padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px 12px;
+        }
+        .bar .logo { font-size: 14px; }
+        .bar-right { gap: 10px; font-size: 16px; }
+        .pill { font-size: 12px; padding: 7px 12px; }
+        .place { display: none !important; }
+
+        /* Hero - single source of truth */
+        .hero {
+          height: auto;
+          min-height: 100svh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          padding-top: calc(72px + env(safe-area-inset-top, 0px));
+          padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+          overflow: visible;
+        }
+        .hero-word {
+          position: relative;
+          left: auto; top: auto; transform: none;
+          font-size: clamp(36px, 14vw, 72px);
+          margin: 0 auto 8px;
+          opacity: 0.15;
+        }
+        .hero-inner {
+          width: 100%;
+          padding: 0 16px 16px;
+          transform: none !important;
+          opacity: 1 !important;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: clamp(16px, 4vh, 28px);
+        }
+        .hero-card {
+          width: min(85vw, 340px);
+          flex-shrink: 0;
+        }
+        .hero-copy {
+          max-width: 38ch;
+          font-size: 15px;
+          text-align: center;
+        }
+        .cue {
+          position: relative;
+          margin: 8px auto 0;
+          opacity: 0.7;
+        }
+        .cue::after { height: 24px; }
+
+        /* Panes & sections */
+        .pane { padding: 56px 16px; }
+        .sheet > .pane:first-child { border-radius: 20px 20px 0 0; }
+        .wrap { gap: 28px; }
+        h2.display { font-size: clamp(32px, 10vw, 48px); }
+        h3.sub { font-size: clamp(20px, 6vw, 28px); }
+        .lead { font-size: 15px; }
+        .tools { width: 100%; margin-top: 20px; }
+        .seg { display: flex; width: 100%; }
+        .seg button { flex: 1; padding: 10px 8px; font-size: 13px; }
+        .box {
+          min-height: 0;
+          aspect-ratio: 1.1;
+          border-radius: 18px;
+          padding: 16px;
+        }
+        .box .nfc-card { width: 100%; }
+        .kc { transform: scale(0.85); transform-origin: center top; }
+        .stand { width: min(220px, 70vw); }
+
+        /* Steps */
         .step {
           grid-template-columns: 1fr;
           gap: 6px;
         }
-        .hero-inner {
-          width: 100%;
-          gap: clamp(12px, 3svh, 22px);
-          padding: calc(64px + env(safe-area-inset-top, 0px)) 18px
-            calc(76px + env(safe-area-inset-bottom, 0px));
-          transform: none;
-          opacity: 1;
-        }
-        .hero-card {
-          width: min(82vw, 360px, calc((100svh - 230px) * 1.586));
-          max-width: 100%;
-        }
-        .hero-copy {
-          max-width: 34ch;
-          font-size: 15px;
-        }
-        .bar {
-          padding-left: 16px;
-          padding-right: 16px;
-        }
-        .bar .logo {
-          font-size: 14px;
-        }
-        .bar-right {
-          gap: 10px;
-          font-size: 17px;
-        }
-        .pill {
-          font-size: 13px;
-          padding: 8px 14px;
-        }
-        .pane {
-          padding: 68px 20px;
-        }
-        .sheet > .pane:first-child {
-          border-radius: 24px 24px 0 0;
-        }
-        h2.display {
-          font-size: clamp(38px, 11vw, 54px);
-        }
-        .tools {
-          width: 100%;
-          margin-top: 26px;
-        }
-        .tools > .btn,
-        .tools > .seg {
-          max-width: 100%;
-        }
-        .seg {
-          display: flex;
-          width: 100%;
-        }
-        .seg button {
-          flex: 1;
-          padding: 10px 12px;
-        }
-        .box {
-          min-height: 0;
-          aspect-ratio: 1.08;
-          border-radius: 22px;
-        }
-        .box .nfc-card {
-          width: min(100%, 380px);
-        }
-        .kc {
-          transform: scale(0.9);
-          transform-origin: center;
-        }
-        .promise li {
-          padding: 25px 0;
-        }
-        .demo {
-          min-height: min(440px, calc(100svh - 180px));
-        }
-        .demo .nfc-card {
-          width: min(250px, 70vw);
-          top: 59%;
-          margin-left: -8%;
-        }
-        .foot {
-          align-items: flex-start;
-          flex-direction: column;
-          gap: 14px;
-        }
-        .foot .logo {
-          font-size: 25px;
-        }
-        .order-actions {
-          align-items: stretch;
-          flex-direction: column;
-        }
-        .order-actions .btn {
-          width: 100%;
-        }
+
+        /* Demo */
+        .demo { min-height: min(380px, calc(100svh - 160px)); }
+        .demo .nfc-card { width: min(220px, 65vw); top: 55%; margin-left: -6%; }
+
+        /* Promise */
+        .promise li { padding: 25px 0; }
+
+        /* Order & footer */
+        .order-actions { flex-direction: column; gap: 10px; }
+        .order-actions .btn { width: 100%; }
+        .foot { flex-direction: column; align-items: flex-start; gap: 10px; }
+        .foot .logo { font-size: 22px; }
       }
-      @media (max-width: 520px) and (max-height: 650px) {
-        .hero-inner {
-          gap: 10px;
-          padding-top: calc(56px + env(safe-area-inset-top, 0px));
-          padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
-        }
-        .hero-card {
-          width: min(70vw, calc((100svh - 180px) * 1.586));
-        }
-        .hero-copy {
-          font-size: 14px;
-          line-height: 1.45;
-        }
-        .cue {
-          bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-        }
-        .cue::after {
-          height: 20px;
-        }
-      }
+
+      /* ===== TABLET: 521–899px ===== */
       @media (min-width: 521px) and (max-width: 899px) {
-        .pane {
-          padding: clamp(76px, 9vw, 104px) clamp(28px, 6vw, 56px);
-        }
-        .wrap {
-          gap: 34px;
-        }
-        .box {
-          min-height: clamp(340px, 50vw, 440px);
-        }
-        .hero-inner {
-          gap: 28px;
-        }
-        .hero-card {
-          width: min(420px, 68vw);
-        }
-        .demo {
-          min-height: 490px;
-        }
-      }
-      @media (max-height: 700px) and (min-width: 521px) {
-        .hero-inner {
-          gap: 18px;
-          padding-top: 60px;
-          padding-bottom: 70px;
-        }
-        .hero-card {
-          width: min(360px, 48vw);
-        }
-        .hero-word {
-          top: 12%;
-        }
-      }
-      @media (max-width: 899px) {
-        .product-pane .visual {
-          order: -1;
-        }
+        .bar { position: fixed; }
         .hero {
-          position: relative;
           height: auto;
           min-height: 100svh;
-          overflow: visible;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding-top: calc(84px + env(safe-area-inset-top, 0px));
-          padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-        }
-        .hero-inner {
-          transform: none;
-          opacity: 1;
-          flex: 0 0 auto;
-          width: 100%;
+          padding-top: calc(88px + env(safe-area-inset-top, 0px));
+          padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
         }
         .hero-word {
-          transform: translateX(-50%);
-        }
-        .hero .cue {
-          opacity: 1;
           position: relative;
-          left: auto;
-          bottom: auto;
-          transform: none;
-          margin: 0 auto;
-          flex: 0 0 auto;
-        }
-        .bar {
-          position: absolute;
-        }
-        .sheet {
-          z-index: auto;
-        }
-        .hero-card,
-        .hero-copy {
-          flex: none;
-        }
-        .hero-card {
-          width: min(82vw, 360px);
-        }
-      }
-      @media (max-width: 520px) {
-        .hero {
-          height: auto;
-          min-height: 100svh;
-          padding-top: calc(84px + env(safe-area-inset-top, 0px));
-          padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-          align-items: stretch;
+          left: auto; top: auto; transform: translateX(-50%);
+          font-size: clamp(48px, 8vw, 120px);
+          margin: 0 auto 16px;
+          opacity: 0.15;
         }
         .hero-inner {
-          padding: 18px 18px 24px;
-          gap: clamp(16px, 3svh, 24px);
+          transform: none !important;
+          opacity: 1 !important;
+          width: 100%;
+          padding: 0 24px;
+          gap: clamp(24px, 5vh, 40px);
         }
-        .hero-card {
-          width: min(82vw, 360px);
-        }
-        .hero .cue {
-          margin-bottom: 8px;
-        }
-        .hero-word {
-          top: 8%;
-          font-size: clamp(42px, 11vw, 64px);
-        }
+        .hero-card { width: min(400px, 60vw); }
+        .hero-copy { max-width: 42ch; font-size: 16px; }
+        .cue { position: relative; margin: 16px auto 0; }
+        .pane { padding: 72px 28px; }
+        .wrap { gap: 40px; }
+        .box { min-height: clamp(300px, 45vw, 400px); }
+        .product-pane .visual { order: -1; }
+      }
+
+      /* ===== LANDSCAPE PHONE / SHORT VIEWPORT ===== */
+      @media (max-height: 600px) and (orientation: landscape) {
+        .hero { min-height: auto; padding-top: 60px; padding-bottom: 16px; }
+        .hero-inner { gap: 12px; }
+        .hero-card { width: min(280px, 50vw); }
+        .hero-word { font-size: clamp(28px, 10vw, 50px); margin-bottom: 4px; }
+        .pane { padding: 48px 20px; }
+        .demo { min-height: 320px; }
       }
       @media (prefers-reduced-motion: reduce) {
         html {
