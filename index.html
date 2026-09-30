@@ -35,6 +35,7 @@ ul{list-style:none}
 a{color:inherit}
 button{font-family:inherit}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}
+img,svg,.nfc-card,.kc,.stand,.phone{-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
 
 /* ---------- Logo lockup ---------- */
 .logo{display:inline-flex;flex-direction:column;align-items:stretch;gap:.55em;font-family:var(--display);font-weight:300;line-height:1;--sub:#8a8a8a}
@@ -47,17 +48,12 @@ button{font-family:inherit}
 .logo.compact .logo-sub{display:none}
 
 /* ---------- Loader ---------- */
-.loader{position:fixed;inset:0;z-index:100;background:#fff;color:#000;display:grid;place-items:center;transition:transform .95s cubic-bezier(.77,0,.18,1)}
-.loader .logo{font-size:clamp(30px,7.6vw,76px);--sub:#d0d0d0}
-.loader .logo-main b{animation:brk 1.1s cubic-bezier(.2,.8,.2,1) both}
-.loader .logo-main b:first-child{--dx:.9em}
-.loader .logo-main b:last-child{--dx:-.9em}
-.loader .logo-main span{animation:txt 1.2s cubic-bezier(.2,.8,.2,1) .15s both}
-.loader .logo-sub i{animation:fill .5s ease both;animation-delay:calc(1.1s + var(--i) * 55ms)}
-html.ready .loader{transform:translateY(-100%)}
-@keyframes brk{from{opacity:0;transform:translateX(var(--dx)) scaleY(1.12)}to{opacity:1;transform:translateX(0) scaleY(1.12)}}
-@keyframes txt{from{opacity:0;letter-spacing:.7em}to{opacity:1;letter-spacing:.26em}}
-@keyframes fill{from{color:#d0d0d0}to{color:#000}}
+.loader{position:fixed;inset:0;z-index:100;background:#fff;color:#000;display:grid;place-items:center;transition:opacity .25s ease,visibility .25s ease}
+.loader-mark{width:82px;height:82px;border:2px solid #e5e5e5;border-top-color:#111;border-radius:50%;display:grid;place-items:center;animation:loader-spin .8s linear infinite}
+.loader-mark .logo{font-size:13px;--sub:#8a8a8a;animation:loader-counter-spin .8s linear infinite}
+html.ready .loader{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes loader-spin{to{transform:rotate(360deg)}}
+@keyframes loader-counter-spin{to{transform:rotate(-360deg)}}
 
 /* ---------- Header ---------- */
 .bar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 18px) clamp(18px,4vw,40px) 18px;color:#fff;mix-blend-mode:difference;pointer-events:none}
@@ -70,7 +66,7 @@ html.ready .loader{transform:translateY(-100%)}
 
 /* ---------- Hero ---------- */
 .stage{position:relative}
-.hero{position:sticky;top:0;z-index:0;height:100vh;height:100svh;min-height:620px;overflow:hidden;display:grid;place-items:center;color:#fff;
+.hero{position:sticky;top:0;z-index:0;height:100vh;height:100svh;min-height:min(620px,100svh);overflow:hidden;display:grid;place-items:center;color:#fff;
   background:radial-gradient(90% 60% at 85% 12%,#2b2b2b 0%,rgba(43,43,43,0) 60%),radial-gradient(70% 50% at 8% 90%,#1f1f1f 0%,rgba(31,31,31,0) 60%),#050505}
 .hero-word{position:absolute;left:50%;top:16%;transform:translateX(-50%) translateY(calc(var(--p,0) * -70px));white-space:nowrap;
   font:300 clamp(48px,12.6vw,230px)/1 var(--display);letter-spacing:-.045em;
@@ -95,7 +91,8 @@ html.loading .hero-copy{opacity:0}
   transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .18s ease-out,background .5s,color .5s,border-color .5s}
 .nfc-card.dark{background:linear-gradient(135deg,#3a3a3a 0%,#161616 42%,#050505 100%);color:#fff;border:1px solid rgba(255,255,255,.16);box-shadow:0 40px 70px -20px rgba(0,0,0,.7);--sub:#9a9a9a}
 .nfc-card.light{background:linear-gradient(135deg,#fff 0%,#f4f4f4 100%);color:#000;border:1px solid #d6d6d6;box-shadow:0 40px 60px -25px rgba(0,0,0,.35);--sub:#8a8a8a}
-.card-in{position:absolute;inset:0;display:grid;place-items:center}
+.custom-design{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:.82;pointer-events:none}
+.card-in{position:absolute;inset:0;z-index:1;display:grid;place-items:center}
 .card-in .logo{font-size:9cqi}
 .nfc-ico{position:absolute;top:6cqi;right:6cqi;width:8cqi;height:8cqi;opacity:.85}
 .card-foot{position:absolute;left:6cqi;right:6cqi;bottom:5.5cqi;font:600 3.7cqi var(--body);letter-spacing:.03em;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -123,7 +120,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 .hint{font-size:14px;font-weight:600}
 .light .hint{color:var(--g7)}
 .dark .hint{color:var(--g3)}
-.box{border-radius:28px;min-height:clamp(360px,48vw,520px);display:grid;place-items:center;padding:40px 22px;overflow:hidden}
+.box{border-radius:28px;min-height:clamp(320px,48vw,520px);display:grid;place-items:center;padding:clamp(22px,4vw,40px) clamp(16px,3vw,22px);overflow:hidden}
 .light .box{background:var(--g1)}
 .dark .box{background:var(--g9)}
 .box .nfc-card{width:min(380px,100%)}
@@ -145,6 +142,9 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 
 .field{display:grid;gap:8px;font:600 14px var(--body);width:100%}
 .field input,.field select,.field textarea{font:400 16px var(--body);padding:14px 16px;border-radius:14px;border:1px solid currentColor;background:transparent;color:inherit;width:100%;appearance:none;-webkit-appearance:none}
+.field input[type=file]{padding:10px;font-size:13px}
+.upload-note{max-width:44ch;line-height:1.5}
+.upload-status{min-height:1.4em}
 .field select{background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 22px) 55%,calc(100% - 16px) 55%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px}
 .field select option{color:#000}
 .field textarea{resize:vertical;min-height:96px}
@@ -165,6 +165,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
   background:radial-gradient(circle at 30% 24%,rgba(255,255,255,.5),rgba(255,255,255,.16) 42%,rgba(255,255,255,.07) 100%);
   border:1.5px solid rgba(255,255,255,.62);
   box-shadow:inset 0 0 0 7px rgba(255,255,255,.07),inset 0 0 0 8px rgba(255,255,255,.3),inset 0 0 36px rgba(255,255,255,.22),0 30px 40px -18px rgba(0,0,0,.9),0 0 50px rgba(255,255,255,.07)}
+.kc-tag>.custom-design{border-radius:50%}
 .kc-coil{position:absolute;inset:0;border-radius:50%;pointer-events:none;opacity:.7;background:repeating-radial-gradient(circle,rgba(255,255,255,.34) 0 1px,transparent 1px 6px);-webkit-mask:radial-gradient(circle closest-side,transparent 63%,#000 64%,#000 91%,transparent 92%);mask:radial-gradient(circle closest-side,transparent 63%,#000 64%,#000 91%,transparent 92%)}
 .kc-gloss{position:absolute;inset:0;border-radius:50%;overflow:hidden;pointer-events:none}
 .kc-gloss::before{content:"";position:absolute;inset:-20%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 46%,rgba(255,255,255,.05) 52%,transparent 58%);animation:sheen 6s ease-in-out infinite}
@@ -177,7 +178,8 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 
 /* ---------- Stand ---------- */
 .stand{width:min(250px,64vw)}
-.stand-body{aspect-ratio:3/4;border-radius:20px 20px 6px 6px;background:linear-gradient(155deg,#343434,#0a0a0a 62%);border:1px solid rgba(255,255,255,.16);color:#fff;padding:22px 20px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 40px 60px -25px rgba(0,0,0,.55)}
+.stand-body{position:relative;overflow:hidden;aspect-ratio:3/4;border-radius:20px 20px 6px 6px;background:linear-gradient(155deg,#343434,#0a0a0a 62%);border:1px solid rgba(255,255,255,.16);color:#fff;padding:22px 20px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 40px 60px -25px rgba(0,0,0,.55)}
+.stand-body>*:not(.custom-design){position:relative;z-index:1}
 .stand-body .logo{font-size:15px;--sub:#9a9a9a}
 .stand-msg{font:500 15px/1.35 var(--body);margin-top:16px}
 .srows{display:flex;flex-direction:column;width:100%;margin-top:6px}
@@ -218,7 +220,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 .step.on{opacity:1}
 .step b{font:300 clamp(30px,3.6vw,46px)/1 var(--display);letter-spacing:-.02em}
 .step p{font-size:15px;line-height:1.55;color:#3d3d3d}
-.demo{position:relative;min-height:540px;display:grid;place-items:center;overflow:hidden}
+.demo{position:relative;min-height:clamp(420px,58vw,540px);display:grid;place-items:center;overflow:hidden}
 .phone{position:relative;z-index:2;width:min(226px,58vw);aspect-ratio:9/18.4;border-radius:38px;background:#000;padding:7px;box-shadow:0 0 0 2px #2a2a2a,0 40px 50px -25px rgba(0,0,0,.6);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .demo[data-state=open] .phone{transform:translateY(-10px) rotate(-2deg)}
 .screen{position:absolute;inset:7px;border-radius:31px;overflow:hidden;transition:opacity .6s}
@@ -255,21 +257,59 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 
 @media(max-width:520px){
   .step{grid-template-columns:1fr;gap:6px}
-  .hero-inner{padding-bottom:110px}
+  .hero-inner{width:100%;gap:22px;padding:76px 18px 100px}
+  .hero-card{width:min(82vw,360px)}
+  .hero-copy{max-width:34ch;font-size:15px}
+  .bar{padding-left:16px;padding-right:16px}
+  .bar .logo{font-size:14px}
+  .bar-right{gap:10px;font-size:17px}
+  .pill{font-size:13px;padding:8px 14px}
+  .pane{padding:68px 20px}
+  .sheet>.pane:first-child{border-radius:24px 24px 0 0}
+  h2.display{font-size:clamp(38px,11vw,54px)}
+  .tools{width:100%;margin-top:26px}
+  .tools>.btn,.tools>.seg{max-width:100%}
+  .seg{display:flex;width:100%}
+  .seg button{flex:1;padding:10px 12px}
+  .box{min-height:0;aspect-ratio:1.08;border-radius:22px}
+  .box .nfc-card{width:min(100%,380px)}
+  .kc{transform:scale(.9);transform-origin:center}
+  .promise li{padding:25px 0}
+  .demo{min-height:440px}
+  .demo .nfc-card{width:min(250px,70vw);top:59%;margin-left:-8%}
+  .foot{align-items:flex-start;flex-direction:column;gap:14px}
+  .foot .logo{font-size:25px}
+  .order-actions{align-items:stretch;flex-direction:column}
+  .order-actions .btn{width:100%}
 }
+@media(min-width:521px) and (max-width:899px){
+  .pane{padding:clamp(76px,9vw,104px) clamp(28px,6vw,56px)}
+  .wrap{gap:34px}
+  .box{min-height:clamp(340px,50vw,440px)}
+  .hero-inner{gap:28px}
+  .hero-card{width:min(420px,68vw)}
+  .demo{min-height:490px}
+}
+@media(max-height:700px) and (min-width:521px){
+  .hero-inner{gap:18px;padding-top:60px;padding-bottom:70px}
+  .hero-card{width:min(360px,48vw)}
+  .hero-word{top:12%}
+}
+@media(max-width:899px){.product-pane .visual{order:-1}}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
-  .loader .logo-sub i{color:#000}
+  .loader-mark,.loader-mark .logo{animation:none}
 }
 </style>
 </head>
 <body>
 
 <div class="loader" id="loader" aria-hidden="true">
-  <div class="logo">
-    <div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div>
-    <div class="logo-sub">ENDLESS CONNECTION</div>
+  <div class="loader-mark">
+    <div class="logo compact">
+      <div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div>
+    </div>
   </div>
 </div>
 
@@ -307,7 +347,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
   <div class="sheet">
 
     <!-- PRODUCT 1: CARD -->
-    <section class="pane light" id="card">
+    <section class="pane light product-pane" id="card">
       <div class="wrap">
         <div class="copy">
           <h2 class="display">NFC Business Card</h2>
@@ -321,11 +361,17 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
             <label class="field" style="max-width:380px">Name on your card
               <input id="cardName" type="text" maxlength="28" placeholder="Your name or business" autocomplete="off">
             </label>
+            <label class="field">Upload card design
+              <input class="design-upload" type="file" accept="image/*" data-preview="cardDesign" data-status="cardDesignStatus">
+            </label>
+            <p class="hint upload-note">Image files up to 5 MB. Preview stays on this device; attach the image in Instagram when ordering.</p>
+            <p class="status upload-status" id="cardDesignStatus" role="status" aria-live="polite"></p>
             <a class="btn solid" href="#order" data-order="NFC Business Card"><span>Order NFC card</span></a>
           </div>
         </div>
         <div class="visual box" data-zone>
           <div class="nfc-card dark" id="demoCard" data-tilt>
+            <img class="custom-design" id="cardDesign" alt="Uploaded card design preview" hidden>
             <div class="card-in">
               <svg class="nfc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 9a4 4 0 0 1 0 6"/><path d="M9 7a7 7 0 0 1 0 10"/><path d="M13 5a10 10 0 0 1 0 14"/><path d="M17 3a13 13 0 0 1 0 18"/></svg>
               <div class="logo" role="img" aria-label="ONE TAP, endless connection">
@@ -341,7 +387,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
     </section>
 
     <!-- PRODUCT 2: KEYCHAIN -->
-    <section class="pane dark" id="keychain">
+    <section class="pane dark product-pane" id="keychain">
       <div class="wrap flip">
         <div class="copy">
           <h2 class="display">OneTap Keychain</h2>
@@ -350,6 +396,11 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
           <p class="lead">Customize your design + add 1 link per keychain.</p>
           <div class="tools">
             <p class="hint">Pick the link it opens:</p>
+            <label class="field">Upload keychain design
+              <input class="design-upload" type="file" accept="image/*" data-preview="keychainDesign" data-status="keychainDesignStatus">
+            </label>
+            <p class="hint upload-note">Image files up to 5 MB. Preview stays on this device; attach the image in Instagram when ordering.</p>
+            <p class="status upload-status" id="keychainDesignStatus" role="status" aria-live="polite"></p>
             <div class="chips" id="chips">
               <button class="chip" type="button" aria-pressed="true">Instagram</button>
               <button class="chip" type="button" aria-pressed="false">Facebook</button>
@@ -367,6 +418,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
             <div class="kc-ring"></div>
             <div class="kc-swing">
               <div class="kc-tag">
+                <img class="custom-design" id="keychainDesign" alt="Uploaded keychain design preview" hidden>
                 <span class="kc-coil"></span>
                 <span class="kc-hole"></span>
                 <div class="logo compact"><div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div></div>
@@ -381,12 +433,17 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
     </section>
 
     <!-- PRODUCT 3: STAND -->
-    <section class="pane light" id="stand">
+    <section class="pane light product-pane" id="stand">
       <div class="wrap">
         <div class="copy">
           <h2 class="display">NFC Business Stand</h2>
           <p class="lead">Perfect for stores, cafés, salons &amp; businesses. Turn walk-in customers into followers and make it easier to get reviews.</p>
           <div class="tools">
+            <label class="field">Upload stand design
+              <input class="design-upload" type="file" accept="image/*" data-preview="standDesign" data-status="standDesignStatus">
+            </label>
+            <p class="hint upload-note">Image files up to 5 MB. Preview stays on this device; attach the image in Instagram when ordering.</p>
+            <p class="status upload-status" id="standDesignStatus" role="status" aria-live="polite"></p>
             <fieldset class="opts">
               <legend>Choose your Stand Package:</legend>
               <label class="opt"><input type="radio" name="pkg" value="2" checked><span class="dot"></span><span><b>Package 1</b><small>Add 2 social links</small></span></label>
@@ -399,6 +456,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
         <div class="visual box">
           <div class="stand" id="standVis" data-links="2" aria-hidden="true">
             <div class="stand-body">
+              <img class="custom-design" id="standDesign" alt="Uploaded stand design preview" hidden>
               <div class="logo compact"><div class="logo-main"><b>[</b><span>ONE TAP</span><b>]</b></div></div>
               <p class="stand-msg">Follow us and leave a review</p>
               <div class="srows">
@@ -486,7 +544,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
             <textarea id="oLinks" placeholder="Instagram, Facebook, TikTok, website, store..."></textarea>
           </label>
           <div class="order-actions">
-            <a class="btn solid" id="msgLink" href="https://www.instagram.com/onetaplaspinas/" target="_blank" rel="noopener"><span>Message us on Instagram</span></a>
+            <a class="btn solid" id="msgLink" href="https://www.instagram.com/direct/t/17845758288551027/" target="_blank" rel="noopener"><span>Message us on Instagram</span></a>
             <button class="btn" id="copyOrder" type="button"><span>Copy order message</span></button>
           </div>
           <p class="hint" style="color:#bdbdbd">Press the Instagram button. Your order message is copied first, so just paste it in our chat.</p>
@@ -512,6 +570,51 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
 
+  /* Keep design uploads local and preview them on their matching product. */
+  $$('.design-upload').forEach(function(input){
+    input.addEventListener('change', function(){
+      var file = input.files && input.files[0];
+      var preview = $('#' + input.getAttribute('data-preview'));
+      var status = $('#' + input.getAttribute('data-status'));
+      if(!file) return;
+      if(file.type.indexOf('image/') !== 0){
+        input.value = '';
+        status.textContent = 'Choose an image file.';
+        return;
+      }
+      if(file.size > 5 * 1024 * 1024){
+        input.value = '';
+        status.textContent = 'Choose an image smaller than 5 MB.';
+        return;
+      }
+      var oldUrl = preview.getAttribute('data-object-url');
+      if(oldUrl) URL.revokeObjectURL(oldUrl);
+      var imageUrl = URL.createObjectURL(file);
+      preview.onload = function(){
+        status.textContent = 'Design preview ready. Attach the original image in Instagram when ordering.';
+      };
+      preview.onerror = function(){
+        URL.revokeObjectURL(imageUrl);
+        preview.removeAttribute('src');
+        preview.removeAttribute('data-object-url');
+        preview.hidden = true;
+        input.value = '';
+        status.textContent = 'This image could not be previewed. Try another image file.';
+      };
+      preview.setAttribute('data-object-url', imageUrl);
+      preview.src = imageUrl;
+      preview.hidden = false;
+    });
+  });
+
+  /* Discourage casual saving of artwork; browser-rendered content can still be captured. */
+  document.addEventListener('contextmenu', function(e){
+    if(e.target.closest('img,svg,.nfc-card,.kc,.stand,.phone')) e.preventDefault();
+  });
+  document.addEventListener('dragstart', function(e){
+    if(e.target.closest('img,svg,.nfc-card,.kc,.stand,.phone')) e.preventDefault();
+  });
+
   /* Order link: opens when customers press Message us */
   var ORDER_LINK = 'https://www.instagram.com/onetaplaspinas/';
 
@@ -532,7 +635,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 
   /* Loader */
   var loader = $('#loader');
-  var minTime = reduce ? 300 : 2800;
+  var minTime = reduce ? 300 : 2000;
   var start = Date.now();
   var finished = false;
   function finish(){
@@ -542,7 +645,7 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
       root.classList.remove('loading');
       root.classList.add('ready');
       window.scrollTo(0,0);
-      setTimeout(function(){ if(loader) loader.style.display = 'none'; }, 1100);
+      setTimeout(function(){ if(loader) loader.style.display = 'none'; }, 250);
     }, wait);
   }
   var loaded = document.readyState === 'complete'
@@ -669,7 +772,11 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
   function buildMessage(){
     var name = $('#oName').value.trim() || '(name)';
     var links = $('#oLinks').value.trim() || '(links)';
-    return 'Hi OneTap Las Pi\u00f1as! I want to order: ' + oProduct.value + '.\nName: ' + name + '\nLink(s): ' + links;
+    var message = 'Hi OneTap Las Pi\u00f1as! I want to order: ' + oProduct.value + '.\nName: ' + name + '\nLink(s): ' + links;
+    if($$('.design-upload').some(function(input){ return input.files && input.files.length; })){
+      message += '\nCustom design: I will attach the image in Instagram chat.';
+    }
+    return message;
   }
   function copyOrder(){
     var text = buildMessage();
