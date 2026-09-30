@@ -290,12 +290,21 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 }
 @media(max-width:899px){
   .product-pane .visual{order:-1}
-  .hero{position:relative}
+  .hero{position:relative;height:auto;height:100svh;min-height:560px;min-height:100svh;overflow:clip}
   .hero-inner{transform:none;opacity:1}
   .hero-word{transform:translateX(-50%);}
   .hero .cue{opacity:1}
   .bar{position:absolute}
   .sheet{z-index:auto}
+  .hero-card,.hero-copy{flex:none}
+  .hero-card{width:min(82vw,360px)}
+}
+@media(max-width:520px){
+  .hero{height:auto;min-height:100svh;padding-top:68px;padding-bottom:78px;display:flex;align-items:center}
+  .hero-inner{padding:18px;gap:clamp(16px,3svh,24px)}
+  .hero-card{width:min(82vw,360px)}
+  .hero .cue{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  .hero-word{top:12%;font-size:clamp(42px,11vw,64px)}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
