@@ -95,6 +95,42 @@
         -webkit-user-drag: none;
       }
 
+      /* ===== TOUCH FEEDBACK & MICRO-INTERACTIONS ===== */
+      .btn, .chip, .seg button, .opt, [data-finish], .pill {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        transition: transform 0.1s, background 0.2s, color 0.2s, box-shadow 0.2s;
+      }
+      .btn:active, .chip:active, .seg button:active, .opt:active, [data-finish]:active, .pill:active {
+        transform: scale(0.97);
+      }
+      [data-finish][aria-pressed="true"] {
+        box-shadow: 0 0 0 2px currentColor;
+      }
+
+      /* ===== FORM FOCUS STATES ===== */
+      .field input, .field select, .field textarea {
+        border-radius: 12px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .field input:focus, .field select:focus, .field textarea:focus {
+        outline: none;
+        border-color: currentColor;
+        box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 20%, transparent);
+      }
+      .field input::placeholder, .field textarea::placeholder {
+        color: currentColor;
+        opacity: 0.35;
+      }
+
+      /* ===== SCROLL MOMENTUM & ANCHOR OFFSET ===== */
+      html {
+        -webkit-overflow-scrolling: touch;
+      }
+      .sheet, .pane {
+        scroll-margin-top: 80px;
+      }
+
       /* ---------- Logo lockup ---------- */
       .logo {
         display: inline-flex;
@@ -157,12 +193,14 @@
         color: #fff;
         mix-blend-mode: difference;
         pointer-events: none;
+        transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease, mix-blend-mode 0.3s ease;
       }
       .bar > * {
         pointer-events: auto;
       }
       .bar .logo {
         font-size: 17px;
+        transition: opacity 0.3s ease;
       }
       .bar-right {
         display: flex;
@@ -174,6 +212,7 @@
       }
       .bar-right .place {
         display: none;
+        opacity: 0.8;
       }
       .pill {
         font: 600 14px var(--body);
@@ -181,12 +220,28 @@
         border: 1px solid #fff;
         border-radius: 999px;
         padding: 9px 18px;
+        transition: background 0.2s, color 0.2s, transform 0.1s;
       }
+      .pill:hover { background: #fff; color: #000; }
       @media (min-width: 640px) {
         .bar-right .place {
           display: inline;
         }
       }
+
+      /* ===== NAVBAR SCROLL STATES ===== */
+      .bar.scrolled {
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        mix-blend-mode: normal;
+        padding-top: calc(env(safe-area-inset-top, 0px) + 12px);
+        padding-bottom: 12px;
+      }
+      .bar.scrolled .logo { opacity: 1; }
+      .bar.scrolled .pill { border-color: rgba(255,255,255,0.6); }
+      .bar.scrolled .pill:hover { background: rgba(255,255,255,0.15); color: #fff; }
+      .bar.scrolled .place { color: rgba(255,255,255,0.7); }
 
       /* ---------- Hero ---------- */
       .stage {
@@ -1353,6 +1408,31 @@
         .nfc-card[data-tilt] { max-width: 100%; }
         .custom-design { max-width: 100%; max-height: 100%; }
         .field input, .field select, .field textarea { font-size: 16px; }
+
+        /* ===== STICKY CTA (mobile) ===== */
+        .order-cta-sticky {
+          position: fixed;
+          bottom: 0; left: 0; right: 0;
+          padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+          background: linear-gradient(180deg, transparent 0%, #000 30%);
+          display: flex;
+          justify-content: center;
+          z-index: 40;
+          pointer-events: none;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(20px);
+          transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+        }
+        .order-cta-sticky.visible {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        .order-cta-sticky .btn { pointer-events: auto; width: 100%; max-width: 320px; }
+
+        /* Mobile navbar scroll state */
+        .bar.scrolled { padding-top: calc(env(safe-area-inset-top, 0px) + 8px); padding-bottom: 8px; }
       }
 
       /* ===== TABLET: 521–899px ===== */
@@ -1950,6 +2030,11 @@
       </div>
     </main>
 
+    <!-- Sticky CTA (mobile) -->
+    <div class="order-cta-sticky" hidden aria-hidden="true">
+      <a class="btn solid" href="#order"><span>Order Now</span></a>
+    </div>
+
     <script>
       (function () {
         var $ = function (s, r) {
@@ -1982,12 +2067,17 @@
               status.textContent = "Choose an image smaller than 5 MB.";
               return;
             }
+            // Immediate loading feedback
+            status.textContent = "Loading preview…";
+            if (preview) preview.style.opacity = "0.5";
+            
             var oldUrl = preview.getAttribute("data-object-url");
             if (oldUrl) URL.revokeObjectURL(oldUrl);
             var imageUrl = URL.createObjectURL(file);
             preview.onload = function () {
               status.textContent =
                 "Design preview ready. Attach the original image in Instagram when ordering.";
+              if (preview) preview.style.opacity = "1";
             };
             preview.onerror = function () {
               URL.revokeObjectURL(imageUrl);
@@ -1997,6 +2087,7 @@
               input.value = "";
               status.textContent =
                 "This image could not be previewed. Try another image file.";
+              if (preview) preview.style.opacity = "0";
             };
             preview.setAttribute("data-object-url", imageUrl);
             preview.src = imageUrl;
@@ -2264,6 +2355,56 @@
         }
         $("#copyOrder").addEventListener("click", copyOrder);
         msgLink.addEventListener("click", copyOrder);
+
+        /* ===== NAVBAR SCROLL EFFECT ===== */
+        var bar = $(".bar");
+        var barTicking = false;
+        function updateBar() {
+          var scrolled = window.scrollY > 60;
+          bar.classList.toggle("scrolled", scrolled);
+          barTicking = false;
+        }
+        window.addEventListener("scroll", function () {
+          if (!barTicking) {
+            barTicking = true;
+            requestAnimationFrame(updateBar);
+          }
+        }, { passive: true });
+        updateBar();
+
+        /* ===== STICKY CTA (mobile) ===== */
+        var cta = $(".order-cta-sticky");
+        var orderSection = $("#order");
+        if (cta && orderSection && "IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              cta.classList.toggle("visible", !en.isIntersecting);
+              cta.hidden = en.isIntersecting;
+              cta.setAttribute("aria-hidden", en.isIntersecting);
+            });
+          }, { rootMargin: "-100px 0px 0px 0px" }).observe(orderSection);
+        }
+
+        /* ===== HAPTIC FEEDBACK ===== */
+        function haptic(type) {
+          if (navigator.vibrate) navigator.vibrate(type === "medium" ? 30 : 10);
+        }
+        $$(".btn, .chip, .seg button, [data-finish], .pill").forEach(function (el) {
+          el.addEventListener("click", function () { haptic("light"); });
+        });
+        $("#copyOrder")?.addEventListener("click", function () { haptic("medium"); });
+
+        /* ===== ENHANCED UPLOAD LOADING ===== */
+        $$(".design-upload").forEach(function (input) {
+          input.addEventListener("change", function () {
+            var preview = $("#" + this.getAttribute("data-preview"));
+            var status = $("#" + this.getAttribute("data-status"));
+            if (this.files && this.files[0]) {
+              status.textContent = "Loading preview…";
+              if (preview) preview.style.opacity = "0.5";
+            }
+          });
+        });
       })();
     </script>
   </body>
