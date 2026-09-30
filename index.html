@@ -56,7 +56,7 @@ img,svg,.nfc-card,.kc,.stand,.phone{-webkit-user-select:none;user-select:none;-w
 
 /* ---------- Hero ---------- */
 .stage{position:relative}
-.hero{position:sticky;top:0;z-index:0;height:100vh;height:100svh;min-height:min(620px,100svh);overflow:hidden;display:grid;place-items:center;color:#fff;
+.hero{position:relative;z-index:0;height:100vh;height:100svh;min-height:min(620px,100svh);overflow:hidden;display:grid;place-items:center;color:#fff;
   background:radial-gradient(90% 60% at 85% 12%,#2b2b2b 0%,rgba(43,43,43,0) 60%),radial-gradient(70% 50% at 8% 90%,#1f1f1f 0%,rgba(31,31,31,0) 60%),#050505}
 .hero-word{position:absolute;left:50%;top:16%;transform:translateX(-50%) translateY(calc(var(--p,0) * -70px));white-space:nowrap;
   font:300 clamp(48px,12.6vw,230px)/1 var(--display);letter-spacing:-.045em;
@@ -243,8 +243,8 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
 
 @media(max-width:520px){
   .step{grid-template-columns:1fr;gap:6px}
-  .hero-inner{width:100%;gap:clamp(12px,3svh,22px);padding:calc(64px + env(safe-area-inset-top,0px)) 18px calc(76px + env(safe-area-inset-bottom,0px));transform:none}
-  .hero-card{width:min(82vw,360px,calc((100svh - 230px)*1.586))}
+  .hero-inner{width:100%;gap:clamp(12px,3svh,22px);padding:calc(64px + env(safe-area-inset-top,0px)) 18px calc(76px + env(safe-area-inset-bottom,0px));transform:none;opacity:1}
+  .hero-card{width:min(82vw,360px,calc((100svh - 230px)*1.586));max-width:100%}
   .hero-copy{max-width:34ch;font-size:15px}
   .bar{padding-left:16px;padding-right:16px}
   .bar .logo{font-size:14px}
@@ -288,7 +288,13 @@ h3.sub{font:300 clamp(24px,2.6vw,34px)/1.15 var(--display);letter-spacing:-.01em
   .hero-card{width:min(360px,48vw)}
   .hero-word{top:12%}
 }
-@media(max-width:899px){.product-pane .visual{order:-1}}
+@media(max-width:899px){
+  .product-pane .visual{order:-1}
+  .hero{position:relative}
+  .hero-inner{transform:none;opacity:1}
+  .hero-word{transform:translateX(-50%);}
+  .hero .cue{opacity:1}
+}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
