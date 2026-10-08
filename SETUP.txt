@@ -1,0 +1,16 @@
+ONETAP LAS PIÑAS — SETUP
+
+Files
+  index.html  = public shop (upload this as your main page)
+  admin.html  = private admin orders page (keep the link to yourself)
+  backend.gs  = Google Apps Script that stores orders in a Google Sheet
+
+Without setup: checkout still works — it copies the order and opens Messenger.
+To get orders into the admin list:
+
+1. Go to sheets.google.com, create a blank sheet, then Extensions > Apps Script.
+2. Paste all of backend.gs, change ADMIN_PIN to your own PIN, and Save.
+3. Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone. Deploy and copy the URL.
+4. Paste that URL into ONETAP_API = '' near the top of the script in BOTH index.html and admin.html.
+5. Upload both files to any host (Netlify, GitHub Pages, etc.) in the same folder.
+6. Open admin.html and sign in with your PIN.

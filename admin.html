@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>OneTap Admin · Orders</title>
+    <style>
+      :root {
+        --bg: #050505;
+        --card: #0f0f10;
+        --line: #222;
+        --tx: #f4f4f5;
+        --mut: #9a9aa2;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--tx);
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          sans-serif;
+        padding: calc(18px + env(safe-area-inset-top, 0px)) 16px
+          calc(40px + env(safe-area-inset-bottom, 0px));
+      }
+      .w {
+        max-width: 1000px;
+        margin: auto;
+      }
+      .btn {
+        display: inline-flex;
+        background: #fff;
+        color: #000;
+        border: 0;
+        border-radius: 99px;
+        padding: 9px 16px;
+        font: 600 13px inherit;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .btn.g {
+        background: transparent;
+        color: #fff;
+        border: 1px solid #444;
+      }
+      input {
+        background: #0b0b0c;
+        color: #fff;
+        border: 1px solid #333;
+        border-radius: 12px;
+        padding: 11px 12px;
+        font: 14px inherit;
+        width: 100%;
+      }
+      .h {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .tabs button {
+        background: #111;
+        border: 1px solid #333;
+        color: #fff;
+        border-radius: 99px;
+        padding: 8px 16px;
+        font: 600 13px inherit;
+        cursor: pointer;
+      }
+      .tabs button.on {
+        background: #fff;
+        color: #000;
+      }
+      .oc {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+        display: grid;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .t {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .it {
+        font-size: 13px;
+        color: var(--mut);
+        white-space: pre-line;
+        background: #111;
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+      .ac {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .st {
+        font-size: 11px;
+        padding: 3px 10px;
+        border-radius: 99px;
+        background: #332a00;
+        color: #ffd24a;
+        align-self: start;
+      }
+      .st.contacted {
+        background: #002a40;
+        color: #5cc8ff;
+      }
+      .st.completed {
+        background: #002a14;
+        color: #5cf59a;
+      }
+      .empty {
+        color: var(--mut);
+        text-align: center;
+        padding: 40px 0;
+      }
+      #login {
+        max-width: 340px;
+        margin: 18vh auto;
+        display: grid;
+        gap: 12px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="login">
+      <h2>OneTap Admin</h2>
+      <input
+        id="pin"
+        type="password"
+        placeholder="Admin PIN"
+        autocomplete="current-password"
+      /><button class="btn" onclick="go()" style="justify-content: center">
+        Sign in
+      </button>
+      <p id="msg" style="color: #ff6b81; font-size: 13px"></p>
+    </div>
+    <div class="w" id="app" style="display: none">
+      <div class="h">
+        <h2>OneTap Admin · Orders</h2>
+        <div style="display: flex; gap: 8px">
+          <button class="btn g" onclick="load()">Refresh</button
+          ><a class="btn g" href="index.html">View shop</a>
+        </div>
+      </div>
+      <div class="tabs" id="tb"></div>
+      <div id="ol"></div>
+    </div>
+    <script>
+      // Same Apps Script web app URL used in index.html (see SETUP.txt)
+      const ONETAP_API = "https://script.google.com/macros/s/AKfycbz2C-7l91ie83WCIX27727gbJDMAvCDTN5hePEuT8ZBnesmGINQ2qZ6bYkhdeGOn53_/exec";
+      let PIN = "",
+        ORD = [],
+        tab = "pending";
+      const $ = (id) => document.getElementById(id);
+      const esc = (s) =>
+        String(s == null ? "" : s).replace(
+          /[&<>"]/g,
+          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c],
+        );
+      async function api(b) {
+        const r = await fetch(ONETAP_API, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({ pin: PIN, ...b }),
+        });
+        return r.json();
+      }
+      async function go() {
+        if (!ONETAP_API) {
+          $("msg").textContent =
+            "Set ONETAP_API in admin.html first (see SETUP.txt).";
+          return;
+        }
+        PIN = $("pin").value;
+        $("msg").textContent = "";
+        try {
+          const r = await api({ action: "list" });
+          if (!r.ok) {
+            $("msg").textContent = "Wrong PIN.";
+            return;
+          }
+          try {
+            sessionStorage.setItem("otpin", PIN);
+          } catch (e) {}
+          $("login").style.display = "none";
+          $("app").style.display = "";
+          ORD = r.orders;
+          draw();
+        } catch (e) {
+          $("msg").textContent = "Could not reach the server.";
+        }
+      }
+      async function load() {
+        try {
+          const r = await api({ action: "list" });
+          if (r.ok) {
+            ORD = r.orders;
+            draw();
+          }
+        } catch (e) {}
+      }
+      function draw() {
+        $("tb").innerHTML = ["pending", "contacted", "completed"]
+          .map(
+            (t) =>
+              `<button class="${t === tab ? "on" : ""}" onclick="tab='${t}';draw()">${t[0].toUpperCase() + t.slice(1)} (${ORD.filter((o) => o.status === t).length})</button>`,
+          )
+          .join("");
+        const L = ORD.filter((o) => o.status === tab).sort(
+          (a, b) => b.createdAt - a.createdAt,
+        );
+        $("ol").innerHTML = L.length
+          ? L.map((o) => {
+              const sm = /^https?:\/\//i.test(o.social)
+                ? o.social
+                : "https://" + o.social;
+              const tel = String(o.phone).replace(/[^\d+]/g, "");
+              const nx =
+                o.status === "pending"
+                  ? ["contacted", "Mark contacted"]
+                  : o.status === "contacted"
+                    ? ["completed", "Mark completed"]
+                    : null;
+              return `<div class="oc"><div class="t"><b>${esc(o.last)}, ${esc(o.first)} ${esc(o.middle)}</b><span class="st ${o.status}">${o.status}</span></div>
+  <small style="color:var(--mut)">${esc(o.ref)} · ${new Date(o.createdAt).toLocaleString()}</small>
+  <div>📞 ${esc(o.phone)}<br>🔗 ${esc(o.social)}<br>📍 ${esc(o.address)}</div>
+  <div class="it">${esc(o.items.map((i) => i.name + " x" + i.q + (i.d ? "\n   " + i.d.replace(/\n/g, "\n   ") : "")).join("\n"))}</div>
+  <div class="ac"><a class="btn" href="${esc(sm)}" target="_blank" rel="noopener">Open profile</a><a class="btn g" href="https://wa.me/${tel.replace("+", "")}" target="_blank" rel="noopener">WhatsApp</a><a class="btn g" href="tel:${esc(tel)}">Call</a>
+  ${nx ? `<button class="btn g" onclick="st('${esc(o.ref)}','${nx[0]}')">${nx[1]}</button>` : ""}<button class="btn g" onclick="del('${esc(o.ref)}')">Delete</button></div></div>`;
+            }).join("")
+          : '<div class="empty">No ' + tab + " orders.</div>";
+      }
+      async function st(ref, s) {
+        await api({ action: "status", ref, status: s });
+        load();
+      }
+      async function del(ref) {
+        if (confirm("Delete this order?")) {
+          await api({ action: "delete", ref });
+          load();
+        }
+      }
+      $("pin").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") go();
+      });
+    </script>
+  </body>
+</html>
